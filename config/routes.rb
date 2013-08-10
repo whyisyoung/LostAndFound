@@ -1,6 +1,8 @@
 LostAndFound::Application.routes.draw do
   get "index_pages/home"
   get "index_pages/help"
+  get "index_pages/about"
+  get "index_pages/contact"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
