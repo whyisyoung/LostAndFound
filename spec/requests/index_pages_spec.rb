@@ -2,55 +2,35 @@ require 'spec_helper'
 
 describe "Index Pages" do
   
-  describe "Home page" do
-  	
-  	it "should have the content 'Lost and Found'" do
-  		visit '/index_pages/home'
-  		expect(page).to have_content( 'Lost and Found' )
-  	end
+  subject { page }
 
-  	it "should have the title 'Home'" do
-  		visit '/index_pages/home'
-  		expect(page).to have_title( "Lost and Found | Home" )
-  	end
+  describe "Home page" do
+
+    before { visit root_path }
+  	
+  	it { should have_content( 'Lost and Found' ) }
+    it { should have_title( "Lost and Found" ) }
+  	it { should_not have_title( "| Home" ) }
   end
 
   describe "Help page" do
+    before { visit help_path }
   	
-  	it "should have the content 'Help'" do
-  		visit '/index_pages/help'
-  		expect(page).to have_content( 'Help' )
-  	end
-
-  	it "should have the title 'Help'" do
-  		visit '/index_pages/help'
-  		expect(page).to have_title( "Lost and Found | Help" )
-  	end
+  	it { should have_content( 'Help' ) }
+    it { should have_title( full_title('Help') ) }
   end
 
   describe "About page" do
+    before { visit about_path }
   	
-  	it "should have the content 'About Us'" do
-  		visit '/index_pages/about'
-  		expect(page).to have_content( 'About Us' )
-  	end
-
-  	it "should have the title 'About Us'" do
-  		visit '/index_pages/about'
-  		expect(page).to have_title( "Lost and Found | About Us" )
-  	end
+  	it { should have_content( 'About Us' ) }
+    it { should have_title( full_title('About Us') ) }
   end
 
   describe "Contact page" do
+    before { visit contact_path }
   	
-  	it "should have the content 'Contact'" do
-  		visit '/index_pages/contact'
-  		expect(page).to have_content( 'Contact' )
-  	end
-
-  	it "should have the title 'Contact'" do
-  		visit '/index_pages/contact'
-  		expect(page).to have_title( "Lost and Found | Contact" )
-  	end
+  	it { should have_content( 'Contact' ) }
+    it { should have_title( full_title('Contact') ) }
   end
 end

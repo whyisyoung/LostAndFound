@@ -1,8 +1,8 @@
 LostAndFound::Application.routes.draw do
-  get "index_pages/home"
-  get "index_pages/help"
-  get "index_pages/about"
-  get "index_pages/contact"
+  root to: "index_pages#home"
+  match '/help',    to: 'index_pages#help',    via: 'get'
+  match '/about',   to: 'index_pages#about',   via: 'get'
+  match '/contact', to: 'index_pages#contact', via: 'get'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
