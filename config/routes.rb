@@ -1,10 +1,13 @@
 LostAndFound::Application.routes.draw do
   resources :users
+  resources :sessions, only: [ :new, :create, :destroy ]
   root to: "index_pages#home"
-  match 'register',   to: 'users#new',           via: 'get'
-  match '/help',    to: 'index_pages#help',    via: 'get'
-  match '/about',   to: 'index_pages#about',   via: 'get'
-  match '/contact', to: 'index_pages#contact', via: 'get'
+  match '/register', to: 'users#new',           via: 'get'
+  match '/signin',   to: 'sessions#new',        via: 'get'
+  match '/signout',  to: 'sessions#destroy',    via: 'delete'
+  match '/help',     to: 'index_pages#help',    via: 'get'
+  match '/about',    to: 'index_pages#about',   via: 'get'
+  match '/contact',  to: 'index_pages#contact', via: 'get'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
