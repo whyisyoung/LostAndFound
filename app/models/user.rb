@@ -11,7 +11,8 @@ class User < ActiveRecord::Base
   									format: { with: VALID_EMAIL_REGEX },
   									uniqueness: { case_sensitive: false }
   has_secure_password
-  validates :password, length: { minimum: 6, maximum: 20 }
+  validates :password, length: { minimum: 6, maximum: 20 }, on: :create
+  validates :password, length: { minimum: 6, maximum: 20 }, on: :update, unless: lambda{ |user| user.password.blank? }
 
   def User.new_remember_token
   	SecureRandom.urlsafe_base64
