@@ -59,9 +59,59 @@ describe "User Pages" do
   	it { should have_title( user.name ) }
   end
 
+  describe "index" do
+    before do
+      sign_in FactoryGirl.create(:user)
+      FactoryGirl.create( :user, name: "Bob", email: "bob@example.com" )
+      FactoryGirl.create( :user, name: "Ben", email: "ben@example.com" )
+      visit users_path
+    end
+
+    it { should have_title('All users') }
+    it { should have_content('All users') }
+
+    describe "pagination" do
+      
+      before(:all) { 30.times { FactoryGirl.create(:user) } }
+      after(:all)  { User.delete_all }
+
+      it { should have_selector('div.pagination') }
+    end
+
+    it "should list each user" do
+      User.paginate(page: 1).each do |user|
+        expect(page).to have_selector( 'li', text: user.name )
+      end
+    end
+
+    describe "delele links" do
+      
+      it { should_not have_link('delele') }
+
+      describe "as an admin user" do
+        let(:admin) { FactoryGirl.create(:admin) }
+        before do 
+          sign_in admin
+          visit users_path
+        end
+
+        it { should have_link('delete', href: user_path(User.first)) }
+        it "should be able to delete another user" do
+          expect do
+            click_link( 'delete', match: :first )
+          end.to change( User, :count ).by(-1)
+        end
+        it { should_not have_link('delete', href: user_path(admin)) }
+      end
+    end
+  end
+
   describe "edit" do
     let(:user) { FactoryGirl.create(:user) }
-    before { visit edit_user_path(user) }
+    before do 
+      sign_in user
+      visit edit_user_path(user) 
+    end
 
     describe "page" do
       it { should have_content("Update your profile") }
@@ -107,12 +157,6 @@ describe "User Pages" do
           fill_in "Email", with: new_email
         end
 
-        describe "with new password and confirmation blank" do
-          before { click_button "Save changes" }
-
-          it { should have_selector('div.alert.alert-success') }
-        end
-
         describe "with new password blank and confirmation not blank" do
           before do
             fill_in "Confirm New Password", with: "newpassword"
@@ -143,22 +187,34 @@ describe "User Pages" do
         end
       end
 
-      context "with all valid information" do        
+
+      context "with valid information" do
         before do
-          fill_in "Name",                 with: new_name
-          fill_in "Email",                with: new_email
-          fill_in "user_password",        with: "newpassword"
-          fill_in "Confirm New Password", with: "newpassword"
-          click_button "Save changes"
+          fill_in "Name",  with: new_name
+          fill_in "Email", with: new_email
         end
 
-        it { should have_title(new_name) }
-        it { should   have_selector('div.alert.alert-success') }
-        it { should have_link('Sign out', href: signout_path) }
-        specify { expect(user.reload.name).to eq new_name }
-        specify { expect(user.reload.email).to eq new_email }
-      end
+        describe "with all changed" do        
+          before do
+            fill_in "user_password",        with: "newpassword"
+            fill_in "Confirm New Password", with: "newpassword"
+            click_button "Save changes"
+          end
 
+          it { should have_title(new_name) }
+          it { should have_selector('div.alert.alert-success') }
+          it { should have_link('Sign out', href: signout_path) }
+          specify { expect(user.reload.name).to eq new_name }
+          specify { expect(user.reload.email).to eq new_email }
+        end
+
+        describe "with new password and confirmation blank" do
+          before { click_button "Save changes" }
+
+          it { should have_selector('div.alert.alert-success') }
+        end
+      end
     end
   end
+
 end
