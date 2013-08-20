@@ -89,6 +89,7 @@ describe "User Pages" do
       it { should_not have_link('delele') }
 
       describe "as an admin user" do
+        before { delete signout_path }
         let(:admin) { FactoryGirl.create(:admin) }
         before do 
           sign_in admin
@@ -111,6 +112,15 @@ describe "User Pages" do
     before do 
       sign_in user
       visit edit_user_path(user) 
+    end
+
+    describe "forbidden attributes" do
+      let(:params) do
+        { user: { admin: true, password: user.password,
+                  password_confirmation: user.password } }
+      end
+      before { put user_path(user), params }
+      specify { expect(user.reload).not_to be_admin }
     end
 
     describe "page" do

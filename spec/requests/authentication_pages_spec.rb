@@ -66,6 +66,17 @@ describe "Authentication" do
           it "should render the desired protected page" do
             expect(page).to have_title("Edit user")
           end
+
+          describe "when signing in again" do
+            before do
+              delete signout_path
+              sign_in user
+            end
+
+            it "should render the default (profile) page" do
+              expect(page).to have_title(user.name)
+            end
+          end
         end
       end
 
@@ -85,6 +96,16 @@ describe "Authentication" do
           before { put user_path(user) }
           specify { expect(response).to redirect_to(signin_path) }
         end
+      end
+    end
+
+    describe "for signed_in users" do
+      let(:user) { FactoryGirl.create(:user) }
+      before { sign_in user }
+
+      describe "when attempting to visit register page" do
+        before { visit register_path }
+        it { should_not have_title('Register')}
       end
     end
 

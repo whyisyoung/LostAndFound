@@ -13,3 +13,4 @@ def sign_in( user, options={} )
 		click_button "Sign in"
 	end
 end
+

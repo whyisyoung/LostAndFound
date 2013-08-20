@@ -1,14 +1,15 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user, only: [:index, :edit, :update]
-  before_filter :correct_user,   only: [:edit, :update]
-  before_filter :admin_user,     only: :destroy
+  before_filter :signed_in_user,         only: [:index, :edit, :update]
+  before_filter :correct_user,           only: [:edit, :update]
+  before_filter :admin_user,             only: :destroy
+  before_filter :one_user_has_logged_in, only: [:new, :create]
 
   def index
-    @users = User.paginate( page: params[:page] )
+    @users = User.page( params[:page] ).order('id DESC')
   end
 
   def new
-  	@user = User.new
+  	@user = User.new 
   end
 
   def create
@@ -77,5 +78,9 @@ class UsersController < ApplicationController
 
     def admin_user
       redirect_to(root_path) unless current_user.admin?
+    end
+
+    def one_user_has_logged_in
+      redirect_to(root_path) unless current_user.nil?
     end
 end
