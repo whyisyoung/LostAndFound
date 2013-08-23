@@ -4,16 +4,16 @@ describe "User Pages" do
   
   subject { page }
 
-  #describe "sign out" do ##无法登出用户, 浏览器中正常 :(
-  #  let(:user) { FactoryGirl.create(:user) }
-  #  before :each do
-  #    sign_in user
-  #  end
-  #  it "should sign out a user" do
-  #    delete signout_path
-  #    expect(page).to have_content("Sign in")
-  #  end
-  #end
+  describe "sign out" do
+    let(:user) { FactoryGirl.create(:user) }
+    before :each do
+      sign_in user
+    end
+    it "should sign out a user" do
+      click_link "Sign out"
+      expect(page).to have_content("Sign in")
+    end
+  end
 
   describe "register page" do
   	before { visit register_path }
@@ -99,23 +99,23 @@ describe "User Pages" do
       
       it { should_not have_link('delele') }
 
-      #describe "as an admin user" do  ##测试无法通过, 但浏览器运行正常 :(
-      #  let(:admin) { FactoryGirl.create(:admin) }
+      describe "as an admin user" do
+        let(:admin) { FactoryGirl.create(:admin) }
         
-      #  before do
-      #    delete signout_path 
-      #    sign_in admin
-      #    visit users_path
-      #  end
+        before do
+          click_link "Sign out"
+          sign_in admin
+          visit users_path
+        end
 
-      #  it { should have_link('delete', href: user_path(User.first)) }
-      #  it "should be able to delete another user" do
-      #    expect do
-      #      click_link( 'delete', match: :first )
-      #    end.to change( User, :count ).by(-1)
-      #  end
-      #  it { should_not have_link('delete', href: user_path(admin)) }
-      #end
+        it { should have_link('delete', href: user_path(User.first)) }
+        it "should be able to delete another user" do
+          expect do
+            click_link( 'delete', match: :first )
+          end.to change( User, :count ).by(-1)
+        end
+        it { should_not have_link('delete', href: user_path(admin)) }
+      end
     end
   end
 

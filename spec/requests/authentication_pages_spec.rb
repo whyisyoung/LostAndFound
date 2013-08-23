@@ -67,17 +67,16 @@ describe "Authentication" do
             expect(page).to have_title("Edit user")
           end
 
-          #describe "when signing in again" do
-          #  before do
-          #    delete signout_path #居然转向了edit界面,用户也没有登出
-          #    sign_in user
-          #    puts page.body
-          #  end
+          describe "when signing in again" do
+            before do
+              click_link "Sign out"
+              sign_in user
+            end
 
-          #  it "should render the default (profile) page" do
-          #    expect(page).to have_title(user.name)
-          #  end
-          #end
+            it "should render the default (profile) page" do
+              expect(page).to have_title(user.name)
+            end
+          end
         end
       end
 
