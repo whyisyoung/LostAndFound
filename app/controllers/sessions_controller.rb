@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+	include Utility
+
+	before_filter :one_user_has_logged_in, only: [:new, :create]
 
 	def new
 	end
@@ -18,4 +21,5 @@ class SessionsController < ApplicationController
 		sign_out
 		redirect_to root_path
 	end
+
 end
