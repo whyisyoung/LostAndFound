@@ -1,0 +1,49 @@
+<%= form_for(@lost_item) do |f| %>
+  <% if @lost_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lost_item.errors.count, "error") %> prohibited this lost_item from being saved:</h2>
+
+      <ul>
+      <% @lost_item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :lost_time %><br />
+    <%= f.datetime_select :lost_time %>
+  </div>
+  <div class="field">
+    <%= f.label :detail %><br />
+    <%= f.text_area :detail %>
+  </div>
+  <div class="field">
+    <%= f.label :finder %><br />
+    <%= f.text_field :finder %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.number_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :place %><br />
+    <%= f.text_field :place %>
+  </div>
+  <div class="field">
+    <%= f.label :category_id %><br />
+    <%= f.number_field :category_id %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

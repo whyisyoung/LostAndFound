@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Lost time:</b>
+  <%= @lost_item.lost_time %>
+</p>
+
+<p>
+  <b>Detail:</b>
+  <%= @lost_item.detail %>
+</p>
+
+<p>
+  <b>Finder:</b>
+  <%= @lost_item.finder %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @lost_item.phone %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @lost_item.status %>
+</p>
+
+<p>
+  <b>Place:</b>
+  <%= @lost_item.place %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @lost_item.category_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @lost_item.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_lost_item_path(@lost_item) %> |
+<%= link_to 'Back', lost_items_path %>
