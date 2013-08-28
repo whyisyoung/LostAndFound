@@ -24,6 +24,7 @@ group :test do
   gem 'libnotify', '~> 0.8.0'
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
   gem 'factory_girl_rails', '~> 4.2.1'
+  gem 'shoulda-matchers'
 end
 
 
