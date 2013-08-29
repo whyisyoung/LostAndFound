@@ -19,6 +19,7 @@ describe User do
   it { should respond_to( :remember_token ) }
   it { should respond_to( :authenticate ) }
   it { should respond_to( :admin ) }
+  it { should respond_to( :lost_items ) }
 
   it { should be_valid }
   it { should_not be_admin }
@@ -130,5 +131,29 @@ describe User do
   describe "remember token" do
     before { @user.save }
     its( :remember_token ) { should_not be_blank }
+  end
+
+  describe "lost_items associations" do
+    
+    before { @user.save }
+    let!(:older_lost_item) do
+      FactoryGirl.create( :lost_item, user: @user, lost_time: 1.day.ago )
+    end
+    let!(:newer_lost_item) do
+      FactoryGirl.create( :lost_item, user: @user, lost_time: 1.hour.ago )
+    end
+
+    it "should have the right lost_items in the right order" do
+      expect(@user.lost_items.to_a).to eq [newer_lost_item, older_lost_item]
+    end
+
+    it "should destroy associated lost_items" do
+      lost_items = @user.lost_items.to_a
+      @user.destroy
+      expect(lost_items).not_to be_empty
+      lost_items.each do | lost_item |
+        expect( LostItem.where(id: lost_item.id) ).to be_empty
+      end
+    end
   end
 end

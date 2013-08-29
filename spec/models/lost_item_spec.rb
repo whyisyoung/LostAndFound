@@ -4,14 +4,13 @@ describe LostItem do
 	
 	let(:user) { FactoryGirl.create(:user) }
 	before do
-		@lost_item = LostItem.new( lost_time: DateTime.now,
-															 detail: "A white cup",
-															 place:  "The fourth teaching building",
-															 status: "unclaimed",
-															 finder: "Lin",
-															 phone:  "18817551234",
-															 category_id: 5,
-															 user_id:     1 )
+		@lost_item = user.lost_items.build( lost_time: DateTime.now,
+															 					detail: "A white cup",
+															 					place:  "The fourth teaching building",
+															 					status: "unclaimed",
+															 					finder: "Lin",
+															 					phone:  "18817551234",
+															 					category_id: 5 )
 	end
 
 	subject { @lost_item }
@@ -24,6 +23,8 @@ describe LostItem do
 	it { should respond_to(:phone) }
 	it { should respond_to(:category_id) }
 	it { should respond_to(:user_id) }
+	it { should respond_to(:user) }
+	its(:user) { should eq user }
 
 	it { should be_valid }
 
@@ -56,4 +57,5 @@ describe LostItem do
 			end
 		end
 	end
+	
 end

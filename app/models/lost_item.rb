@@ -1,4 +1,5 @@
 class LostItem < ActiveRecord::Base
+	belongs_to :user
   attr_accessible :category_id, :detail, :finder, :lost_time, :phone, :place, :status, :user_id
 
   validates :lost_time, :detail, :finder, :place, :user_id, presence: true
@@ -7,5 +8,7 @@ class LostItem < ActiveRecord::Base
   validates :phone,  length: { is: 11, message: "phone number should be 11 digits!" },
   								 	 format: { with: VALID_PHONE_REGEX },
   								 	 allow_blank: true
+
+  default_scope -> { order 'lost_time DESC' }
 
 end
