@@ -31,7 +31,7 @@ describe "User Pages" do
         expect { click_button submit }.not_to change(User, :count)
       end
 
-      describe "after submissin" do
+      describe "after submission" do
         before { click_button submit }
 
         it { should have_title( 'Register' ) }
@@ -63,11 +63,22 @@ describe "User Pages" do
   end
 
   describe "profile page" do
-  	let( :user ) { FactoryGirl.create( :user ) }
+  	let(:user) { FactoryGirl.create(:user) }
+    let!(:item1) { FactoryGirl.create(:lost_item, user: user, detail: "Backpack")}
+    let!(:item2) { FactoryGirl.create(:lost_item, user: user, detail: "Cup")}
+
   	before { visit user_path( user ) }
 
   	it { should have_content( user.name ) }
   	it { should have_title( user.name ) }
+
+    describe "lost_items" do
+      it { should have_content(item1.detail) }
+      it { should have_content(item2.detail) }
+      it { should have_content(user.lost_items.count) }
+      it { should have_link(item1.detail, href: user_lost_item_path(user, item1)) }
+      it { should have_link(item2.detail, href: user_lost_item_path(user, item2)) }
+    end
   end
 
   describe "index" do

@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   has_many :lost_items, dependent: :destroy
 
   attr_accessible :email, :name, :password, :password_confirmation
-
+  
   before_save { email.downcase! }
   before_create :create_remember_token
 

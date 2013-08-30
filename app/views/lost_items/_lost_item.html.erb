@@ -1,0 +1,8 @@
+<li>
+	<span class="detail">
+		<%=  link_to( lost_item.detail, lost_item ) %>
+	</span>
+	<span class="timestamp">
+		Posted <%= time_ago_in_words(lost_item.created_at) %> ago.
+	</span>
+</li>

@@ -13,6 +13,7 @@ class LostItemsController < ApplicationController
   end
 
   def edit
+    @lost_item = LostItem.find(params[:id])
   end
 
   def create

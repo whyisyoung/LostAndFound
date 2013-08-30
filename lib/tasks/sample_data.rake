@@ -15,5 +15,19 @@ namespace :db do
 										password: password,
 										password_confirmation: password )
 		end
+
+		users = User.all(limit: 6)
+		50.times do
+			detail = Faker::Lorem.sentence(5)
+			users.each do |user| 
+				user.lost_items.create!( lost_time: DateTime.now,
+															   detail: detail,
+															 	 place:  "Library",
+												 				 status: "unclaimed",
+												 				 finder: "Lin",
+												 				 phone:  "18817551234",
+												 				 category_id: 5 ) 
+			end
+		end
 	end
 end
