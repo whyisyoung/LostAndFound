@@ -17,7 +17,7 @@ module UsersHelper
 					input_password.blank? && input_confirmation.blank?
 	end
 
-	def update_attributes_without_password
+	def delete_password_params_if_blank
 		input_password     = params[:user][:password]
     input_confirmation = params[:user][:password_confirmation]
     if input_password.blank?

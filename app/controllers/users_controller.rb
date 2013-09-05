@@ -34,8 +34,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    # To check whether new password or confirmation is blank
-    update_attributes_without_password
+    delete_password_params_if_blank
     
     @user = User.find( params[:id] )
     if edit_nothing_on_user?

@@ -9,6 +9,8 @@ class LostItem < ActiveRecord::Base
   								 	 format: { with: VALID_PHONE_REGEX },
   								 	 allow_blank: true
 
+ 	validates :category_id, inclusion: { in: 1..5 }
+
   default_scope -> { order 'lost_time DESC' }
 
 end

@@ -57,5 +57,12 @@ describe LostItem do
 			end
 		end
 	end
+
+	describe "when category_id is not in right range" do
+		it "should be invalid" do
+			@lost_item.category_id = 10
+			expect(@lost_item).not_to be_valid
+		end
+	end
 	
 end

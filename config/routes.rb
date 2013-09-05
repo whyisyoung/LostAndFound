@@ -1,12 +1,12 @@
 LostAndFound::Application.routes.draw do
   
-  resources :lost_items
-
   resources :categories
 
-  resources :users
+  resources :users do
+    resources :lost_items, except: :index
+  end
 
-  resources :sessions, only: [ :new, :create, :destroy ]
+  resources :sessions,   only: [ :new, :create, :destroy ]
   
   root to: "index_pages#home"
   match '/register', to: 'users#new',           via: 'get'

@@ -1,11 +1,12 @@
-<%= form_for(@lost_item) do |f| %>
+<%= form_for([@user, @lost_item]) do |f| %>
   <% if @lost_item.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@lost_item.errors.count, "error") %> prohibited this lost_item from being saved:</h2>
-
+      <div class="alert alert-error">
+        <%= pluralize(@lost_item.errors.count, "error") %> prohibited this lost_item from being saved.
+      </div>
       <ul>
-      <% @lost_item.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+      <% @lost_item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
       <% end %>
       </ul>
     </div>
@@ -17,7 +18,7 @@
   </div>
   <div class="field">
     <%= f.label :detail %><br />
-    <%= f.text_area :detail %>
+    <%= f.text_area :detail, rows: 3 %>
   </div>
   <div class="field">
     <%= f.label :finder %><br />
@@ -25,7 +26,7 @@
   </div>
   <div class="field">
     <%= f.label :phone %><br />
-    <%= f.number_field :phone %>
+    <%= f.text_field :phone %>
   </div>
   <div class="field">
     <%= f.label :status %><br />
@@ -37,7 +38,7 @@
   </div>
   <div class="field">
     <%= f.label :category_id %><br />
-    <%= f.number_field :category_id %>
+    <%= f.number_field :category_id, in: 1..5 %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -5,8 +5,8 @@ describe "LostItem pages nested with User" do
 
 	describe "when create new lost_item" do
 		let(:user) { FactoryGirl.create(:user) }
-		let(:submit) { "Create new lost_item"}
-		before { visit new_user_lost_item_path }
+		let(:submit) { "Create Lost item"}
+		before { visit new_user_lost_item_path(user) }
 
 		it { should have_title('New Lost Item') }
 		it { should have_content('New lost_item') }
@@ -47,25 +47,33 @@ describe "LostItem pages nested with User" do
 	end
 
 	describe "edit" do
-		let(:user) { FactoryGirl.create(:user) }
-		let(:lost_item) { FactoryGirl.create(:lost_item, user: user) }
+		let!(:user) { FactoryGirl.create(:user) }
+		let!(:lost_item) { FactoryGirl.create(:lost_item, user: user) }
+		let(:update) { "Update Lost item"}
+
 		before { visit edit_user_lost_item_path(user, lost_item) }
 
 		describe "page" do
-			it { should have_title("Edit lost_item") }
+			it { should have_title("Edit Lost Item") }
 			it { should have_content("Editing lost_item") }
 		end
 
 		describe "with invalid changes" do
 
 			context "with invalid phone" do
-				before { fill_in "Phone", with: 12345 }
+				before do 
+					fill_in "Phone", with: 12345 
+					click_button update
+				end
 
 				it { should have_content('error')}
 			end
 
 			context "with invalid category" do
-				before { fill_in "Category", with: 10 }
+				before do 
+					fill_in "Category", with: 10 
+					click_button update
+				end
 
 				it { should have_content('error') }
 			end
@@ -77,6 +85,7 @@ describe "LostItem pages nested with User" do
 			before do
 				fill_in "Place", 		with: new_place
 				fill_in "Status", 	with: new_status
+				click_button update
 			end
 
 			it { should have_selector('div.alert.alert-success') }

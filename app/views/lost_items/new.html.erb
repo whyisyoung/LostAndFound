@@ -1,5 +1,6 @@
+<% provide(:title, 'New Lost Item') %>
 <h1>New lost_item</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', lost_items_path %>
+<%= link_to 'Back', user_lost_items_path(@user) %>
