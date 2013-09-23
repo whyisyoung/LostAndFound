@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   before_filter :one_user_has_logged_in, only: [:new, :create]
 
   def index
-    @users = User.page( params[:page] ).order('id DESC')
+    @users = User.page( params[:page] )
   end
 
   def new
@@ -65,13 +65,6 @@ class UsersController < ApplicationController
   private
 
     # Before filters
-
-    def signed_in_user
-      unless signed_in?
-        store_location
-        redirect_to signin_url, notice: "Please sign in." 
-      end
-    end
 
     def correct_user
       @user = User.find( params[:id] )

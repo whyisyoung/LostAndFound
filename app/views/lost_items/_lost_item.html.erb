@@ -5,4 +5,10 @@
 	<span class="timestamp">
 		Posted <%= time_ago_in_words(lost_item.created_at) %> ago.
 	</span>
+	<% if current_user?(lost_item.user) or current_user.admin? %>
+		<%= link_to 'edit', edit_user_lost_item_path(@user, lost_item) %> | 
+		<%= link_to 'delete', [@user, lost_item], method: :delete,
+																							data: { confirm: "You sure?" },
+																							title: lost_item.detail %>
+	<% end %>
 </li>

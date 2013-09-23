@@ -15,16 +15,12 @@ describe "User Pages" do
     end
   end
 
-  describe "register page" do
-  	before { visit register_path }
-
-  	it { should have_content( 'Register' ) }
-  	it { should have_title( full_title('Register') ) }
-  end
-
   describe "register" do
   	before { visit register_path }
   	let(:submit) { "Create my account" }
+
+    it { should have_content( 'Register' ) }
+    it { should have_title( full_title('Register') ) }
 
     describe "with invalid information" do
       it "should not create a user" do
@@ -64,20 +60,83 @@ describe "User Pages" do
 
   describe "profile page" do
   	let(:user) { FactoryGirl.create(:user) }
+    let(:another_user) { FactoryGirl.create(:user) }
+    let(:admin) { FactoryGirl.create(:admin) }
+
     let!(:item1) { FactoryGirl.create(:lost_item, user: user, detail: "Backpack")}
     let!(:item2) { FactoryGirl.create(:lost_item, user: user, detail: "Cup")}
 
-  	before { visit user_path( user ) }
+    shared_examples_for "common user" do
+      it { should have_content( user.name ) }
+      it { should have_title( user.name ) }
 
-  	it { should have_content( user.name ) }
-  	it { should have_title( user.name ) }
-
-    describe "lost_items" do
       it { should have_content(item1.detail) }
       it { should have_content(item2.detail) }
       it { should have_content(user.lost_items.count) }
       it { should have_link(item1.detail, href: user_lost_item_path(user, item1)) }
       it { should have_link(item2.detail, href: user_lost_item_path(user, item2)) }
+    end
+
+    shared_examples_for "authenticated user" do
+      it { should have_link('edit',   href: edit_user_lost_item_path(user,item1)) }
+      it { should have_link('delete', href: user_lost_item_path(user, item1)) }
+      it "be able to delete a lost_item" do
+        expect do
+          click_link( 'delete', match: :first )
+        end.to change( LostItem, :count ).by(-1)
+      end
+    end
+
+    describe "user visits his own profile" do
+      
+      before do
+        sign_in user
+        visit user_path(user)
+      end
+
+      it_should_behave_like "authenticated user"
+    end
+
+    describe "admin user visits the user's profile" do
+      
+      before do
+        sign_in admin
+        visit user_path(user)
+      end
+
+      it_should_behave_like "authenticated user"
+    end
+
+    describe "another user visits the user's profile" do
+      
+      before do
+        sign_in another_user
+        visit user_path(user)
+      end
+
+      it_should_behave_like "common user"
+      it { should_not have_link('edit') }
+      it { should_not have_link('delete') }
+
+      describe "should not be able to visit the user's new item page" do
+        before { visit new_user_lost_item_path(user) }
+        it { should_not have_title('New Lost Item')}
+      end
+
+      describe "should not be able to create lost_item for the user" do
+        before { post user_lost_items_path(user) }
+        specify { expect(response).to redirect_to(root_path) }
+      end
+
+      describe "should not be able to edit the user's lost_items" do
+        before { visit edit_user_lost_item_path(user, item1) }
+        it { should_not have_title('Edit Lost Item') }
+      end
+
+      describe "should not be able to delete the user's lost_items" do
+        before { delete user_lost_item_path(user, item1) }
+        specify{ expect(response).to redirect_to(root_path) }
+      end
     end
   end
 

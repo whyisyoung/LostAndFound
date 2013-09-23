@@ -51,6 +51,7 @@ describe "Authentication" do
   describe "authorization" do
 
     describe "for non-signed-in users" do
+
       let(:user) { FactoryGirl.create(:user) }
 
       describe "when attempting to visit a protected page" do
@@ -80,6 +81,10 @@ describe "Authentication" do
         end
       end
 
+      shared_examples_for "need to sign in first" do
+        specify { expect(response).to redirect_to(signin_path) }
+      end
+
       describe "in the Users controller" do
 
         describe "visiting the user index" do
@@ -94,7 +99,30 @@ describe "Authentication" do
 
         describe "submitting to the update action" do
           before { put user_path(user) }
-          specify { expect(response).to redirect_to(signin_path) }
+          it_should_behave_like "need to sign in first"
+        end
+      end
+
+      describe "in the LostItems controller" do
+        
+        describe "visiting the new lost_item page" do
+          before { visit new_user_lost_item_path(user)}
+          it { should have_title('Sign in') }
+        end
+
+        describe "visiting the edit page" do
+          before { visit edit_user_lost_item_path(user,FactoryGirl.create(:lost_item)) }
+          it { should have_title('Sign in') }
+        end
+
+        describe "submitting to the create action" do
+          before { post user_lost_items_path(user) }
+          it_should_behave_like "need to sign in first"
+        end
+
+        describe "submitting to the destroy action" do
+          before { delete user_lost_item_path(user, FactoryGirl.create(:lost_item)) }
+          it_should_behave_like "need to sign in first"
         end
       end
     end

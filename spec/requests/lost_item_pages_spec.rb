@@ -6,7 +6,10 @@ describe "LostItem pages nested with User" do
 	describe "when create new lost_item" do
 		let(:user) { FactoryGirl.create(:user) }
 		let(:submit) { "Create Lost item"}
-		before { visit new_user_lost_item_path(user) }
+		before do
+			sign_in user
+			visit new_user_lost_item_path(user)
+		end 
 
 		it { should have_title('New Lost Item') }
 		it { should have_content('New lost_item') }
@@ -51,7 +54,10 @@ describe "LostItem pages nested with User" do
 		let!(:lost_item) { FactoryGirl.create(:lost_item, user: user) }
 		let(:update) { "Update Lost item"}
 
-		before { visit edit_user_lost_item_path(user, lost_item) }
+		before do
+			sign_in user
+			visit edit_user_lost_item_path(user, lost_item)
+		end 
 
 		describe "page" do
 			it { should have_title("Edit Lost Item") }
