@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   include Utility
 
-  before_filter :signed_in_user,         only: [:index, :edit, :update]
+  before_filter :signed_in_user,         only: [:index, :show, :edit, :update]
   before_filter :correct_user,           only: [:edit, :update]
   before_filter :admin_user,             only: :destroy
   before_filter :one_user_has_logged_in, only: [:new, :create]
