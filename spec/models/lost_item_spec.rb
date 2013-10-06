@@ -5,12 +5,12 @@ describe LostItem do
 	let(:user) { FactoryGirl.create(:user) }
 	before do
 		@lost_item = user.lost_items.build(lost_time: DateTime.now,
-															 					detail: 'A white cup',
-															 					place:  'The fourth teaching building',
-															 					status: 'unclaimed',
-															 					finder: 'Lin',
-															 					phone:  '18817551234',
-															 					category_id: 5)
+															 				 detail: 'A white cup',
+															 				 place:  'The fourth teaching building',
+															 				 status: 'unclaimed',
+															 				 finder: 'Lin',
+															 				 phone:  '18817551234',
+															 				 category_id: 5)
 	end
 
 	subject { @lost_item }

@@ -135,6 +135,7 @@ describe "User Pages" do
 
       describe "should not be able to create lost_item for the user" do
         before { post user_lost_items_path(user) }
+        # FIXME: expect root_path while got signin_path
         specify { expect(response).to redirect_to(root_path) }
       end
 
@@ -145,6 +146,7 @@ describe "User Pages" do
 
       describe "should not be able to delete the user's lost_items" do
         before { delete user_lost_item_path(user, item1) }
+        # FIXME: expect root_path while got signin_path
         specify{ expect(response).to redirect_to(root_path) }
       end
     end
