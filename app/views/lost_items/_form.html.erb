@@ -2,12 +2,13 @@
   <% if @lost_item.errors.any? %>
     <div id="error_explanation">
       <div class="alert alert-error">
-        <%= pluralize(@lost_item.errors.count, "error") %> prohibited this lost_item from being saved.
+        <%= pluralize(@lost_item.errors.count, "error") %>
+        prohibited this lost_item from being saved.
       </div>
       <ul>
-      <% @lost_item.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @lost_item.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>

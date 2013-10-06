@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "User Pages" do
-  
+
   subject { page }
 
   describe "sign out" do
@@ -10,17 +10,18 @@ describe "User Pages" do
       sign_in user
     end
     it "should sign out a user" do
-      click_link "Sign out"
-      expect(page).to have_content("Sign in")
+      click_link 'Sign out'
+      expect(page).to have_content('Sign in')
     end
   end
 
+
   describe "register" do
   	before { visit register_path }
-  	let(:submit) { "Create my account" }
+  	let(:submit) { 'Create my account' }
 
-    it { should have_content( 'Register' ) }
-    it { should have_title( full_title('Register') ) }
+    it { should have_content('Register') }
+    it { should have_title(full_title('Register')) }
 
     describe "with invalid information" do
       it "should not create a user" do
@@ -30,17 +31,17 @@ describe "User Pages" do
       describe "after submission" do
         before { click_button submit }
 
-        it { should have_title( 'Register' ) }
-        it { should have_content( 'error' ) }
+        it { should have_title('Register') }
+        it { should have_content('error') }
       end
     end
 
     describe "with valid information" do
       before do
-        fill_in "Name",             with: "Example User"
-        fill_in "Email",            with: "user@example.com"
-        fill_in "Password",         with: "foobar"
-        fill_in "Confirm password", with: "foobar"
+        fill_in 'Name',             with: 'Example User'
+        fill_in 'Email',            with: 'user@example.com'
+        fill_in 'Password',         with: 'foobar'
+        fill_in 'Confirm password', with: 'foobar'
       end
 
       it "should create a user" do
@@ -49,46 +50,55 @@ describe "User Pages" do
 
       describe "after saving the user" do
         before { click_button submit }
-        let( :user ) { User.find_by_email( 'user@example.com' ) }
+        let(:user) { User.find_by_email('user@example.com') }
 
         it { should have_link('Sign out') }
-        it { should have_title( user.name ) }
-        it { should have_selector( 'div.alert.alert-success', text: 'Welcome' ) }
+        it { should have_title(user.name) }
+        it { should have_selector('div.alert.alert-success', text: 'Welcome') }
       end
   	end
   end
+
 
   describe "profile page" do
   	let(:user) { FactoryGirl.create(:user) }
     let(:another_user) { FactoryGirl.create(:user) }
     let(:admin) { FactoryGirl.create(:admin) }
 
-    let!(:item1) { FactoryGirl.create(:lost_item, user: user, detail: "Backpack")}
-    let!(:item2) { FactoryGirl.create(:lost_item, user: user, detail: "Cup")}
+    let!(:item1) { FactoryGirl.create(:lost_item, user: user, detail: 'Bag') }
+    let!(:item2) { FactoryGirl.create(:lost_item, user: user, detail: 'Cup') }
 
+    # Common user visits other user's profile, 
+    # he can not see edit and destroy links.
     shared_examples_for "common user" do
-      it { should have_content( user.name ) }
-      it { should have_title( user.name ) }
+      it { should have_content(user.name) }
+      it { should have_title(user.name) }
 
       it { should have_content(item1.detail) }
       it { should have_content(item2.detail) }
       it { should have_content(user.lost_items.count) }
-      it { should have_link(item1.detail, href: user_lost_item_path(user, item1)) }
-      it { should have_link(item2.detail, href: user_lost_item_path(user, item2)) }
+      it { should have_link(item1.detail,
+                            href: user_lost_item_path(user, item1)) }
+      it { should have_link(item2.detail,
+                            href: user_lost_item_path(user, item2)) }
     end
 
+    # Current logged_in user(or admin) visits his own profile,
+    # he can edit or destroy those posted lost_items.
     shared_examples_for "authenticated user" do
-      it { should have_link('edit',   href: edit_user_lost_item_path(user,item1)) }
-      it { should have_link('delete', href: user_lost_item_path(user, item1)) }
-      it "be able to delete a lost_item" do
+      it { should have_link('edit',
+                            href: edit_user_lost_item_path(user,item1)) }
+      it { should have_link('delete',
+                            href: user_lost_item_path(user, item1)) }
+      it "should be able to delete a lost_item" do
         expect do
-          click_link( 'delete', match: :first )
-        end.to change( LostItem, :count ).by(-1)
+          click_link('delete', match: :first)
+        end.to change(LostItem, :count).by(-1)
       end
     end
 
     describe "user visits his own profile" do
-      
+
       before do
         sign_in user
         visit user_path(user)
@@ -98,7 +108,7 @@ describe "User Pages" do
     end
 
     describe "admin user visits the user's profile" do
-      
+
       before do
         sign_in admin
         visit user_path(user)
@@ -108,7 +118,7 @@ describe "User Pages" do
     end
 
     describe "another user visits the user's profile" do
-      
+
       before do
         sign_in another_user
         visit user_path(user)
@@ -143,8 +153,8 @@ describe "User Pages" do
   describe "index" do
     before do
       sign_in FactoryGirl.create(:user)
-      FactoryGirl.create( :user, name: "Bob", email: "bob@example.com" )
-      FactoryGirl.create( :user, name: "Ben", email: "ben@example.com" )
+      FactoryGirl.create(:user, name: 'Bob', email: 'bob@example.com')
+      FactoryGirl.create(:user, name: 'Ben', email: 'ben@example.com')
       visit users_path
     end
 
@@ -152,7 +162,7 @@ describe "User Pages" do
     it { should have_content('All users') }
 
     describe "pagination" do
-      
+
       before(:all) { 30.times { FactoryGirl.create(:user) } }
       after(:all)  { User.delete_all }
 
@@ -161,19 +171,19 @@ describe "User Pages" do
 
     it "should list each user" do
       User.paginate(page: 1).each do |user|
-        expect(page).to have_selector( 'li', text: user.name )
+        expect(page).to have_selector('li', text: user.name)
       end
     end
 
     describe "delele links" do
-      
+
       it { should_not have_link('delele') }
 
       describe "as an admin user" do
         let(:admin) { FactoryGirl.create(:admin) }
-        
+
         before do
-          click_link "Sign out"
+          click_link 'Sign out'
           sign_in admin
           visit users_path
         end
@@ -181,8 +191,8 @@ describe "User Pages" do
         it { should have_link('delete', href: user_path(User.first)) }
         it "should be able to delete another user" do
           expect do
-            click_link( 'delete', match: :first )
-          end.to change( User, :count ).by(-1)
+            click_link('delete', match: :first)
+          end.to change(User, :count).by(-1)
         end
         it { should_not have_link('delete', href: user_path(admin)) }
       end
@@ -191,9 +201,9 @@ describe "User Pages" do
 
   describe "edit" do
     let(:user) { FactoryGirl.create(:user) }
-    before do 
+    before do
       sign_in user
-      visit edit_user_path(user) 
+      visit edit_user_path(user)
     end
 
     describe "forbidden attributes" do
@@ -201,58 +211,59 @@ describe "User Pages" do
         { user: { admin: true, password: user.password,
                   password_confirmation: user.password } }
       end
+
       before { put user_path(user), params }
       specify { expect(user.reload).not_to be_admin }
     end
 
     describe "page" do
-      it { should have_content("Update your profile") }
-      it { should have_content("Current Password") }
-      it { should have_title("Edit user") }
-      it { should have_link( 'change', href: 'http://gravatar.com/emails') }
+      it { should have_content('Update your profile') }
+      it { should have_content('Current Password') }
+      it { should have_title('Edit user') }
+      it { should have_link('change', href: 'http://gravatar.com/emails') }
     end
 
     describe "with nothing changed" do
-      before { click_button "Save changes" }
+      before { click_button 'Save changes' }
 
-      it { should_not have_content("Profile updated") }
-      it { should_not have_content("Invalid current password") }
+      it { should_not have_content('Profile updated') }
+      it { should_not have_content('Invalid current password') }
     end
 
     describe "with invalid current password" do
-      before do 
-        fill_in "New Name",             with: "New name"
-        fill_in "New Email",            with: "new@example.com"
-        fill_in "current_password",     with: "invalid" 
-        fill_in "user_password",        with: "newpassword"
-        fill_in "Confirm New Password", with: "newpassword"
-        click_button "Save changes"
+      before do
+        fill_in 'New Name',             with: 'New name'
+        fill_in 'New Email',            with: 'new@example.com'
+        fill_in 'current_password',     with: 'invalid'
+        fill_in 'user_password',        with: 'newpassword'
+        fill_in 'Confirm New Password', with: 'newpassword'
+        click_button 'Save changes'
       end
 
       it { should have_content('Invalid current password') }
     end
 
     describe "with valid current password" do
-      let( :new_name )  { "New name" }
-      let( :new_email ) { "new@example.com" }
-      before { fill_in "current_password",   with: "foobar" }
+      let(:new_name)  { 'New name' }
+      let(:new_email) { 'new@example.com' }
+      before { fill_in 'current_password',   with: 'foobar' }
 
       context "with nothing changed" do
-        before { click_button "Save changes" }
+        before { click_button 'Save changes' }
 
-        it { should_not have_content("Profile updated") }
+        it { should_not have_content('Profile updated') }
       end
 
       context "with invalid information" do
         before do
-          fill_in "Name",  with: new_name
-          fill_in "Email", with: new_email
+          fill_in 'Name',  with: new_name
+          fill_in 'Email', with: new_email
         end
 
         describe "with new password blank and confirmation not blank" do
           before do
-            fill_in "Confirm New Password", with: "newpassword"
-            click_button "Save changes"
+            fill_in 'Confirm New Password', with: 'newpassword'
+            click_button 'Save changes'
           end
 
           it { should have_content('error') }
@@ -260,9 +271,9 @@ describe "User Pages" do
 
         describe "with short password" do
           before do
-            fill_in "user_password",        with: "a"
-            fill_in "Confirm New Password", with: "a"
-            click_button "Save changes"
+            fill_in 'user_password',        with: 'a'
+            fill_in 'Confirm New Password', with: 'a'
+            click_button 'Save changes'
           end
 
           it { should have_content("error")}
@@ -270,27 +281,27 @@ describe "User Pages" do
 
         describe "with password does not match confirmation" do
           before do
-            fill_in "user_password",        with: "newpassword"
-            fill_in "Confirm New Password", with: "invalid"
-            click_button "Save changes"
+            fill_in 'user_password',        with: 'newpassword'
+            fill_in 'Confirm New Password', with: 'invalid'
+            click_button 'Save changes'
           end
 
-          it { should have_content("error")}
+          it { should have_content('error')}
         end
       end
 
 
       context "with valid information" do
         before do
-          fill_in "Name",  with: new_name
-          fill_in "Email", with: new_email
+          fill_in 'Name',  with: new_name
+          fill_in 'Email', with: new_email
         end
 
-        describe "with all changed" do        
+        describe "with all changed" do
           before do
-            fill_in "user_password",        with: "newpassword"
-            fill_in "Confirm New Password", with: "newpassword"
-            click_button "Save changes"
+            fill_in 'user_password',        with: 'newpassword'
+            fill_in 'Confirm New Password', with: 'newpassword'
+            click_button 'Save changes'
           end
 
           it { should have_title(new_name) }
@@ -301,7 +312,7 @@ describe "User Pages" do
         end
 
         describe "with new password and confirmation blank" do
-          before { click_button "Save changes" }
+          before { click_button 'Save changes' }
 
           it { should have_selector('div.alert.alert-success') }
         end

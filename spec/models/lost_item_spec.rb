@@ -1,16 +1,16 @@
 require "spec_helper"
 
 describe LostItem do
-	
+
 	let(:user) { FactoryGirl.create(:user) }
 	before do
-		@lost_item = user.lost_items.build( lost_time: DateTime.now,
-															 					detail: "A white cup",
-															 					place:  "The fourth teaching building",
-															 					status: "unclaimed",
-															 					finder: "Lin",
-															 					phone:  "18817551234",
-															 					category_id: 5 )
+		@lost_item = user.lost_items.build(lost_time: DateTime.now,
+															 					detail: 'A white cup',
+															 					place:  'The fourth teaching building',
+															 					status: 'unclaimed',
+															 					finder: 'Lin',
+															 					phone:  '18817551234',
+															 					category_id: 5)
 	end
 
 	subject { @lost_item }
@@ -40,7 +40,7 @@ describe LostItem do
 
 	describe "when phone format is valid" do
 		it "should be valid" do
-			numbers = [ 13310289862, 18812345678, 14782192561, 15214167865, nil ]
+			numbers = [13310289862, 18812345678, 14782192561, 15214167865, nil]
 			numbers.each do |valid_number|
 				@lost_item.phone = valid_number
 				expect(@lost_item).to be_valid
@@ -50,7 +50,8 @@ describe LostItem do
 
 	describe "when phone format is invalid" do
 		it "should be invalid" do
-			numbers = [ 15410289862, 184123,  "a13310289764",14382192561, 152141647857865, "abcde" ]
+			numbers = [15410289862, 184123,  'a13310289764',
+									14382192561, 152141647857865, 'abcde']
 			numbers.each do |invalid_number|
 				@lost_item.phone = invalid_number
 				expect(@lost_item).not_to be_valid
@@ -64,5 +65,5 @@ describe LostItem do
 			expect(@lost_item).not_to be_valid
 		end
 	end
-	
+
 end

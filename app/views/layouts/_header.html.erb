@@ -1,11 +1,13 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
 	<div class="navbar-inner">
 		<div class="container">
-			<%= link_to "Lost and Found", root_path, id: "logo" %>
+			<%= link_to 'Lost and Found', root_path, id: "logo" %>
 			<nav>
 				<ul class="nav pull-right">
-					<li><%= link_to "Home",    root_path %></li>
-					<li><%= link_to "Help",    help_path %></li>
+					<li><%= link_to 'Home',    root_path %></li>
+					<li><%= link_to 'Help',    help_path %></li>
+
+					<%# Only signed_in user can see drop-down menu, else, sign_in link. %>
 					<% if signed_in? %>
 						<li><%= link_to 'Users', users_path %></li>
 						<li id="fat-menu" class="dropdown">
@@ -13,16 +15,19 @@
 								Account <b class="caret"></b>
 							</a>
 							<ul class="dropdown-menu">
-								<li><%= link_to "Profile", current_user %></li>
-								<li><%= link_to "Settings", edit_user_path(current_user) %></li>
+								<li><%= link_to 'Profile', current_signed_in_user %></li>
+								<li>
+									<%= link_to 'Settings',
+											edit_user_path(current_signed_in_user) %>
+								</li>
 								<li class="divider"></li>
 								<li>
-									<%= link_to "Sign out", signout_path, method: "delete" %>
+									<%= link_to 'Sign out', signout_path, method: "delete" %>
 								</li>
 							</ul>
 						</li>
 					<% else %>
-						<li><%= link_to "Sign in", signin_path %></li>
+						<li><%= link_to 'Sign in', signin_path %></li>
 					<% end %>
 				</ul>
 			</nav>

@@ -1,25 +1,25 @@
 require 'spec_helper'
 
 describe User do
-  
+
   before do
-  	@user = User.new( name: "Example User", 
-  										email: "user@example.com",
-  										password: "foobar",
-  										password_confirmation: "foobar" ) 
+  	@user = User.new(name: 'Example User',
+  									 email: 'user@example.com',
+  									 password: 'foobar',
+  									 password_confirmation: 'foobar')
   end
 
   subject { @user }
 
-  it { should respond_to( :name ) }
-  it { should respond_to( :email ) }
-  it { should respond_to( :password_digest ) }
-  it { should respond_to( :password ) }
-  it { should respond_to( :password_confirmation ) }
-  it { should respond_to( :remember_token ) }
-  it { should respond_to( :authenticate ) }
-  it { should respond_to( :admin ) }
-  it { should respond_to( :lost_items ) }
+  it { should respond_to(:name) }
+  it { should respond_to(:email) }
+  it { should respond_to(:password_digest) }
+  it { should respond_to(:password) }
+  it { should respond_to(:password_confirmation) }
+  it { should respond_to(:remember_token) }
+  it { should respond_to(:authenticate) }
+  it { should respond_to(:admin) }
+  it { should respond_to(:lost_items) }
 
   it { should be_valid }
   it { should_not be_admin }
@@ -34,12 +34,12 @@ describe User do
   end
 
   describe "when name is not present" do
-  	before { @user.name = " " }
+  	before { @user.name = ' ' }
   	it { should_not be_valid }
   end
 
   describe "when email is not present" do
-  	before { @user.email = "" }
+  	before { @user.email = '' }
   	it { should_not be_valid }
   end
 
@@ -80,67 +80,71 @@ describe User do
   end
 
   describe "email address with mixed case" do
-  	let ( :mixed_case_email ) { "Foo@ExAMPle.Com" }
+  	let (:mixed_case_email) { 'Foo@ExAMPle.Com' }
 
   	it "should be saved as all lower-case" do
   		@user.email = mixed_case_email
   		@user.save
-  		expect( @user.reload.email ).to eq mixed_case_email.downcase
+  		expect(@user.reload.email).to eq mixed_case_email.downcase
   	end
   end
 
   describe "when password is not present" do
-  	before do 
-  		@user = User.new( name: "Example User", email: "user@example.com",
-  											password: " ", password_confirmation: " " )
+  	before do
+  		@user = User.new(name: 'Example User', email: 'user@example.com',
+  											password: ' ', password_confirmation: ' ')
   	end
   	it { should_not be_valid }
   end
 
   describe "when password doen't match confirmation" do
-  	before { @user.password_confirmation = "mismatch" }
+  	before { @user.password_confirmation = 'mismatch' }
   	it { should_not be_valid }
   end
 
   describe "with a password that's too short" do
-  	before { @user.password = @user.password_confirmation = "a" * 5 }
+  	before { @user.password = @user.password_confirmation = 'a' * 5 }
   	it { should_not be_valid }
   end
 
   describe "with a password that's too long" do
-  	before { @user.password = @user.password_confirmation = "a" * 21 }
+  	before { @user.password = @user.password_confirmation = 'a' * 21 }
   	it { should_not be_valid }
   end
 
   describe "return value of authenticate method" do
   	before { @user.save }
-  	let( :found_user ) { User.find_by_email( @user.email ) }
+  	let(:found_user) { User.find_by_email(@user.email) }
 
   	describe "with valid password" do
-  		it { should eq found_user.authenticate( @user.password ) }
+  		it { should eq found_user.authenticate(@user.password) }
   	end
 
   	describe "with invalid password" do
-  		let( :user_for_invalid_password ) { found_user.authenticate( "invalid" ) }
+  		let(:user_for_invalid_password) { found_user.authenticate('invalid') }
 
   		it { should_not eq user_for_invalid_password }
-  		specify { expect( user_for_invalid_password ).to be_false }
+  		specify { expect(user_for_invalid_password).to be_false }
   	end
   end
 
   describe "remember token" do
     before { @user.save }
-    its( :remember_token ) { should_not be_blank }
+    its(:remember_token) { should_not be_blank }
   end
 
   describe "lost_items associations" do
-    
+
     before { @user.save }
+
+    # Use let! method force to create variables.
+    # To make sure the timestamp of these two lost_item
+    # is right, and thus @user.lost_items array is not empty.
     let!(:older_lost_item) do
-      FactoryGirl.create( :lost_item, user: @user, lost_time: 1.day.ago )
+      FactoryGirl.create(:lost_item, user: @user, lost_time: 1.day.ago)
     end
     let!(:newer_lost_item) do
-      FactoryGirl.create( :lost_item, user: @user, lost_time: 1.hour.ago )
+      FactoryGirl.create(:lost_item, user: @user, lost_time: 1.hour.ago)
     end
 
     it "should have the right lost_items in the right order" do
@@ -152,7 +156,7 @@ describe User do
       @user.destroy
       expect(lost_items).not_to be_empty
       lost_items.each do | lost_item |
-        expect( LostItem.where(id: lost_item.id) ).to be_empty
+        expect(LostItem.where(id: lost_item.id)).to be_empty
       end
     end
   end

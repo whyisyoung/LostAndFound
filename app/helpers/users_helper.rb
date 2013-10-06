@@ -13,10 +13,12 @@ module UsersHelper
 		input_email 			 = params[:user][:email]
 		input_password 		 = params[:user][:password]
 		input_confirmation = params[:user][:password_confirmation]
-		(input_name == @user.name) && (input_email == @user.email) && 
+		(input_name == @user.name) && (input_email == @user.email) &&
 					input_password.blank? && input_confirmation.blank?
 	end
 
+	# Allow user to leave password and confirmation blank when editing profile.
+	# Just delete password or confirmation from user params.
 	def delete_password_params_if_blank
 		input_password     = params[:user][:password]
     input_confirmation = params[:user][:password_confirmation]
@@ -29,5 +31,5 @@ module UsersHelper
       end
     end
 	end
-	
+
 end

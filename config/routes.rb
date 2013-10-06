@@ -1,5 +1,5 @@
 LostAndFound::Application.routes.draw do
-  
+
   resources :categories
 
   resources :users do
@@ -7,8 +7,8 @@ LostAndFound::Application.routes.draw do
   end
 
   resources :sessions,   only: [ :new, :create, :destroy ]
-  
-  root to: "index_pages#home"
+
+  root to: 'index_pages#home'
   match '/register', to: 'users#new',           via: 'get'
   match '/signin',   to: 'sessions#new',        via: 'get'
   match '/signout',  to: 'sessions#destroy',    via: 'delete'

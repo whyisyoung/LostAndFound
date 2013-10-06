@@ -27,5 +27,5 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     @category.destroy
   end
-  
+
 end

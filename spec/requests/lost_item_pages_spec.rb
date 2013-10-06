@@ -5,11 +5,11 @@ describe "LostItem pages nested with User" do
 
 	describe "when create new lost_item" do
 		let(:user) { FactoryGirl.create(:user) }
-		let(:submit) { "Create Lost item"}
+		let(:submit) { 'Create Lost item'}
 		before do
 			sign_in user
 			visit new_user_lost_item_path(user)
-		end 
+		end
 
 		it { should have_title('New Lost Item') }
 		it { should have_content('New lost_item') }
@@ -29,12 +29,12 @@ describe "LostItem pages nested with User" do
 
 		describe "with valid information" do
 			before do
-				fill_in "Detail",				with: "A white cup"
-				fill_in "Finder",				with: "Lin"
-				fill_in "Phone",				with: 18817551234
-				fill_in "Status",				with: "unclaimed"
-				fill_in "Place",				with: "Library"
-				fill_in "Category",			with: 5
+				fill_in 'Detail',				with: 'A white cup'
+				fill_in 'Finder',				with: 'Lin'
+				fill_in 'Phone',				with: 18817551234
+				fill_in 'Status',				with: 'unclaimed'
+				fill_in 'Place',				with: 'Library'
+				fill_in 'Category',			with: 5
 			end
 
 			it "should create a lost_item" do
@@ -44,31 +44,33 @@ describe "LostItem pages nested with User" do
 			describe "after saving the lost_item" do
 				before { click_button submit }
 
-				it { should have_selector( 'div.alert.alert-success') }
+				it { should have_selector('div.alert.alert-success') }
 			end
 		end
 	end
 
+
 	describe "edit" do
+		# Use let! method, force to create variables instantly.
 		let!(:user) { FactoryGirl.create(:user) }
 		let!(:lost_item) { FactoryGirl.create(:lost_item, user: user) }
-		let(:update) { "Update Lost item"}
+		let(:update) { 'Update Lost item' }
 
 		before do
 			sign_in user
 			visit edit_user_lost_item_path(user, lost_item)
-		end 
+		end
 
 		describe "page" do
-			it { should have_title("Edit Lost Item") }
-			it { should have_content("Editing lost_item") }
+			it { should have_title('Edit Lost Item') }
+			it { should have_content('Editing lost_item') }
 		end
 
 		describe "with invalid changes" do
 
 			context "with invalid phone" do
-				before do 
-					fill_in "Phone", with: 12345 
+				before do
+					fill_in 'Phone', with: 12345
 					click_button update
 				end
 
@@ -76,8 +78,8 @@ describe "LostItem pages nested with User" do
 			end
 
 			context "with invalid category" do
-				before do 
-					fill_in "Category", with: 10 
+				before do
+					fill_in 'Category', with: 10
 					click_button update
 				end
 
@@ -86,11 +88,11 @@ describe "LostItem pages nested with User" do
 		end
 
 		describe "with valid changes" do
-			let(:new_place) { "4# building" }
-			let(:new_status) { "claimed" }
+			let(:new_place) { '4# building' }
+			let(:new_status) { 'claimed' }
 			before do
-				fill_in "Place", 		with: new_place
-				fill_in "Status", 	with: new_status
+				fill_in 'Place', 		with: new_place
+				fill_in 'Status', 	with: new_status
 				click_button update
 			end
 

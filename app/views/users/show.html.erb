@@ -8,6 +8,8 @@
 			</h1>
 		</section>
 	</aside>
+
+	<%# Show all the lost_items posted by the user.  %>
 	<div class="span8">
 		<% if @user.lost_items.any? %>
 			<h3>Lost_items (<%= @user.lost_items.count %>)</h3>
