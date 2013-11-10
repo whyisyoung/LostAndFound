@@ -32,7 +32,7 @@ describe "LostItem pages nested with User" do
 				fill_in 'Detail',				with: 'A white cup'
 				fill_in 'Finder',				with: 'Lin'
 				fill_in 'Phone',				with: 18817551234
-				fill_in 'Status',				with: 'unclaimed'
+				select 'unclaimed',			from: 'Status'
 				fill_in 'Place',				with: 'Library'
 				fill_in 'Category',			with: 5
 			end
@@ -92,7 +92,7 @@ describe "LostItem pages nested with User" do
 			let(:new_status) { 'claimed' }
 			before do
 				fill_in 'Place', 		with: new_place
-				fill_in 'Status', 	with: new_status
+				select new_status,  from: 'Status'
 				click_button update
 			end
 

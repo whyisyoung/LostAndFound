@@ -8,6 +8,8 @@ gem 'bcrypt-ruby', '~> 3.0.1'
 gem 'faker', '~> 1.1.2'
 gem 'will_paginate', '~> 3.0.4'
 gem 'bootstrap-will_paginate', '~> 0.0.9'
+gem 'simple_form'
+gem 'bootstrap-datetimepicker-rails'
 
 group :development, :test do
   gem 'sqlite3', '~> 1.3.7'
@@ -16,7 +18,7 @@ group :development, :test do
   gem 'spork-rails', github: 'sporkrb/spork-rails'
   gem 'guard-spork', '~> 1.5.0'
   gem 'childprocess', '~> 0.3.6'
-  gem 'guard-livereload'
+  gem 'guard-livereload', require: false
 end
 
 group :test do

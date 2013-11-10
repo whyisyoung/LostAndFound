@@ -3,28 +3,28 @@
 
 <div class="row">
 	<div class="span6 offset3">
-		<%= form_for(@user) do |f| %>
+		<%= simple_form_for(@user) do |f| %>
+			<%# SMALL: This maybe not needed any more. %>
 			<%= render 'shared/error_messages' %>
 
-			<%= f.label :name, "New Name" %>
-			<%= f.text_field :name %>
+			<%= f.input :name, label: "New Name" %>
+			<%= f.input :email, label: "New Email" %>
 
-			<%= f.label :email, "New Email" %>
-			<%= f.text_field :email %>
+			<%# HACK: password_field_tag cannot work well with simple_form,
+								maybe devise gem would be okay. %>
+			<div class="control-group password required">
+				<%= f.label :current_password, label: "Current Password",
+																			 required: true %>
+				<%= password_field_tag :current_password, params[:current_password] %>
+			</div>
 
-			<%= f.label :current_password, "Current Password" %>
-			<%= password_field_tag :current_password, params[:current_password] %>
-
-			<%= f.label :password, "New Password (optional)" %>
-			<%= f.password_field :password %>
-
-			<%= f.label :password_confirmation, "Confirm New Password" %>
-			<%= f.password_field :password_confirmation %>
-
+			<%= f.input :password, label: "New Password", placeholder: "Optional" %>
+			<%= f.input :password_confirmation, label: "Confirm New Password" %>
 			<%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+
 		<% end %>
 
-		<%= gravatar_for @user %>
+		<%= gravatar_for @user, size: 52, class: "change_gravatar" %>
 		<a href="http://gravatar.com/emails" target="_blank">change</a>
 	</div>
 </div>

@@ -1,4 +1,5 @@
 @import "bootstrap";
+@import "bootstrap-datetimepicker";
 
 /* mixins, variables, etc. */
 
@@ -127,24 +128,15 @@ aside {
   }
 }
 
-.gravatar {
+.gravatar, .change_gravatar {
   float: left;
   margin-right: 10px;
 }
-
-/* forms */
-
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  @include box_sizing;
+.change_gravatar {
+  margin-left: 120px;
 }
 
-input {
-  height: auto !important;
-}
+/* forms errors */
 
 #error_explanation {
   color: #f00;
@@ -158,8 +150,8 @@ input {
   @extend .control-group;
   @extend .error;
  }
- 
- /* Users index */
+
+/* Users index */
 
 .users {
   list-style: none;
@@ -191,13 +183,54 @@ input {
 .timestamp {
   color: $grayLight;
 }
-.gravatar {
-  float: left;
-  margin-right: 10px;
-}
 aside {
   textarea {
     height: 100px;
     margin-bottom: 5px;
   }
+}
+
+/* simple_form */
+.simple_form {
+  label {
+    float: left;
+    width: 100px;
+    text-align: right;
+    margin: 2px 10px;
+  }
+  div {
+    &.input {
+      margin-bottom: 10px;
+    }
+    &.boolean {
+      margin-left: 120px;
+    }
+  }
+  input[type='submit'] {
+    margin-left: 120px;
+  }
+  div.boolean label {
+    float: none;
+    margin: 0;
+  }
+  label.collection_radio {
+    float: none;
+    margin-right: 10px;
+    margin-left: 2px;
+  }
+  .hint {
+    clear: left;
+    margin-left: 120px;
+    font-size: 12px;
+    color: #555;
+    display: block;
+    font-style: italic;
+  }
+  .help-inline {
+    margin-left: 120px;
+  }
+}
+
+p.new_user {
+  margin-left: 120px;
 }

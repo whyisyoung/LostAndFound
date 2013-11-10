@@ -1,11 +1,12 @@
 module UsersHelper
 
 	# Returns the Gravatar (http://gravatar.com) for the given user.
-	def gravatar_for( user, options = { size: 50 })
+	def gravatar_for( user, options = { size: 50, class: "gravatar" })
 		gravatar_id = Digest::MD5::hexdigest( user.email.downcase )
-		size = options[ :size ]
+		size = options[:size]
+		style = options[:class]
 		gravatar_url = "http://www.gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
-		image_tag( gravatar_url, alt: user.name, class: "gravatar" )
+		image_tag( gravatar_url, alt: user.name, class: style )
 	end
 
 	def edit_nothing_on_user?

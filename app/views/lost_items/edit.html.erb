@@ -1,7 +1,11 @@
 <% provide(:title, 'Edit Lost Item') %>
 <h1>Editing lost_item</h1>
 
-<%= render 'form' %>
+<div class="row">
+  <div class="span6 offset3">
+		<%= render 'form' %>
 
-<%= link_to 'Show', user_lost_item_path( @user, @lost_item ) %> |
-<%= link_to 'Back', user_path(@user) %>
+		<%= link_to 'Show', user_lost_item_path( @user, @lost_item ) %> |
+		<%= link_to 'Back', user_path(@user) %>
+	</div>
+</div>

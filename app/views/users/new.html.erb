@@ -3,22 +3,20 @@
 
 <div class="row">
   <div class="span6 offset3">
-    <%= form_for(@user) do |f| %>
-    	<%= render 'shared/error_messages' %>
+    <%= simple_form_for(@user) do |f| %>
+      <%# SMALL: This maybe not needed any more. %>
+    	<%#= render 'shared/error_messages' %>
+      <%= f.input :name %>
+      <%= f.input :email %>
+      <%= f.input :password, placeholder: "6 - 20 characters",
+                             input_html: { maxlength: 20 },
+                             required: true %>
+      <%= f.input :password_confirmation,
+                             label: "Confirm password",
+                             required: true %>
 
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-
-      <%= f.label :email %>
-      <%= f.text_field :email %>
-
-      <%= f.label :password, "Password( 6-20 characters )" %>
-      <%= f.password_field :password %>
-
-      <%= f.label :password_confirmation, "Confirm password" %>
-      <%= f.password_field :password_confirmation %>
-
-      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+      <%= f.button :submit, "Create my account",
+                            class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
 </div>
