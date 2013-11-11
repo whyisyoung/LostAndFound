@@ -12,6 +12,12 @@ GIT
       rails (>= 3.0.0, < 5)
       spork (>= 1.0rc0)
 
+GIT
+  remote: git://github.com/zpaulovics/datetimepicker-rails.git
+  revision: f0316e55d6a46794e56d5e636ea838c9eaef34cb
+  specs:
+    datetimepicker-rails (0.0.8)
+
 GEM
   remote: http://ruby.taobao.org/
   specs:
@@ -44,7 +50,6 @@ GEM
       multi_json (~> 1.0)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
-    bootstrap-datetimepicker-rails (0.0.11)
     bootstrap-sass (2.3.2.0)
       sass (~> 3.2)
     bootstrap-will_paginate (0.0.9)
@@ -230,13 +235,13 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt-ruby (~> 3.0.1)
-  bootstrap-datetimepicker-rails
   bootstrap-sass (~> 2.3.2.0)
   bootstrap-will_paginate (~> 0.0.9)
   capybara (~> 2.1.0)
   childprocess (~> 0.3.6)
   coffee-rails (~> 3.2.1)
   database_cleaner!
+  datetimepicker-rails!
   factory_girl_rails (~> 4.2.1)
   faker (~> 1.1.2)
   guard-livereload
