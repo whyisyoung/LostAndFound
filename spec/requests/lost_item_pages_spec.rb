@@ -6,6 +6,7 @@ describe "LostItem pages nested with User" do
 	describe "when create new lost_item" do
 		let(:user) { FactoryGirl.create(:user) }
 		let(:submit) { 'Create Lost item'}
+		let!(:category) { FactoryGirl.create(:category) }
 		before do
 			sign_in user
 			visit new_user_lost_item_path(user)
@@ -29,12 +30,13 @@ describe "LostItem pages nested with User" do
 
 		describe "with valid information" do
 			before do
+				fill_in 'Lost time', 		with: DateTime.now
 				fill_in 'Detail',				with: 'A white cup'
 				fill_in 'Finder',				with: 'Lin'
 				fill_in 'Phone',				with: 18817551234
 				select 'unclaimed',			from: 'Status'
 				fill_in 'Place',				with: 'Library'
-				fill_in 'Category',			with: 5
+				select 'electronics',		from: 'Category'
 			end
 
 			it "should create a lost_item" do
@@ -54,6 +56,7 @@ describe "LostItem pages nested with User" do
 		# Use let! method, force to create variables instantly.
 		let!(:user) { FactoryGirl.create(:user) }
 		let!(:lost_item) { FactoryGirl.create(:lost_item, user: user) }
+		let!(:category) { FactoryGirl.create(:category) }
 		let(:update) { 'Update Lost item' }
 
 		before do
@@ -77,14 +80,6 @@ describe "LostItem pages nested with User" do
 				it { should have_content('error')}
 			end
 
-			context "with invalid category" do
-				before do
-					fill_in 'Category', with: 10
-					click_button update
-				end
-
-				it { should have_content('error') }
-			end
 		end
 
 		describe "with valid changes" do

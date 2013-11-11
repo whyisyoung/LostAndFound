@@ -1,5 +1,6 @@
 class LostItem < ActiveRecord::Base
 	belongs_to :user
+  belongs_to :category
   attr_accessible :category_id, :detail, :finder, :lost_time,
   								:phone, :place, :status, :user_id
 
@@ -11,7 +12,7 @@ class LostItem < ActiveRecord::Base
   								 	 format: { with: VALID_PHONE_REGEX },
   								 	 allow_blank: true
 
- 	validates :category_id, inclusion: { in: 1..5 }
+ 	validates :category_id, inclusion: { in: 1..6 }
 
   default_scope -> { order 'lost_time DESC' }
 

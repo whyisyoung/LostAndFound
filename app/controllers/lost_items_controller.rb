@@ -2,7 +2,7 @@ class LostItemsController < ApplicationController
 
   before_filter :get_user
   before_filter :user_has_signed_in, except: :show
-  before_filter :correct_user,   only:   [:edit, :update, :destroy]
+  before_filter :correct_user,       only:   [:edit, :update, :destroy]
 
   def get_user
     @user = User.find(params[:user_id])
