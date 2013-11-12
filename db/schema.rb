@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131111145921) do
+ActiveRecord::Schema.define(:version => 20131112060141) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -23,13 +23,13 @@ ActiveRecord::Schema.define(:version => 20131111145921) do
     t.datetime "lost_time"
     t.text     "detail"
     t.string   "finder"
-    t.integer  "phone"
+    t.integer  "phone",       :limit => 8
     t.string   "status"
     t.string   "place"
     t.integer  "category_id"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
   add_index "lost_items", ["user_id", "created_at"], :name => "index_lost_items_on_user_id_and_created_at"
