@@ -1,7 +1,7 @@
 source 'http://ruby.taobao.org'
-ruby '1.9.3'
+ruby '2.0.0'
 
-gem 'rails', '3.2.13'
+gem 'rails', '3.2.16'
 
 gem 'bootstrap-sass', '~> 2.3.2.0'
 gem 'bcrypt-ruby', '~> 3.0.1'
@@ -26,7 +26,12 @@ end
 group :test do
   gem 'selenium-webdriver', '~> 2.0.0'
   gem 'capybara', '~> 2.1.0'
-  gem 'libnotify', '~> 0.8.0'
+  
+  # use next line in linux
+  # gem 'libnotify', '~> 0.8.0' 
+
+  gem 'growl', '1.0.3' # for OS X
+
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
   gem 'factory_girl_rails', '~> 4.2.1'
   gem 'shoulda-matchers'
