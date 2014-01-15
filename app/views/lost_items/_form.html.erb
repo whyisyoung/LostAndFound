@@ -13,7 +13,7 @@
     </div>
   <% end %>
 
-  <%= f.input :lost_time, as: :datetime_picker %>
+  <%= f.input :lost_time, as: :datetime_picker, input_html: { value: DateTime.now } %>
   <%= f.input :detail, input_html: { rows: 4 } %>
   <%= f.input :finder %>
   <%= f.input :phone %>
