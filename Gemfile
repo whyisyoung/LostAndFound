@@ -9,6 +9,7 @@ gem 'faker', '~> 1.1.2'
 gem 'will_paginate', '~> 3.0.4'
 gem 'bootstrap-will_paginate', '~> 0.0.9'
 gem 'simple_form'
+gem 'rubyzip',  "~> 0.9.9"
 # SORRY! But the 'datetimepicker-rails' name in RubyGems repo already taken.
 gem 'datetimepicker-rails', require: 'datetimepicker-rails',
                             git: 'git://github.com/zpaulovics/datetimepicker-rails.git'

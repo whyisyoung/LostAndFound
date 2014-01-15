@@ -31,11 +31,11 @@ describe "LostItem pages nested with User" do
 		describe "with valid information" do
 			before do
 				fill_in 'Lost time', 		with: DateTime.now
-				fill_in 'Detail',				with: 'A white cup'
-				fill_in 'Finder',				with: 'Lin'
-				fill_in 'Phone',				with: 18817551234
+				fill_in 'Detail',			with: 'A white cup'
+				fill_in 'Finder',			with: 'Lin'
+				fill_in 'Phone',			with: 18817551234
 				select 'unclaimed',			from: 'Status'
-				fill_in 'Place',				with: 'Library'
+				fill_in 'Place',			with: 'Library'
 				select 'electronics',		from: 'Category'
 			end
 
@@ -86,7 +86,7 @@ describe "LostItem pages nested with User" do
 			let(:new_place) { '4# building' }
 			let(:new_status) { 'claimed' }
 			before do
-				fill_in 'Place', 		with: new_place
+				fill_in 'Place', 	with: new_place
 				select new_status,  from: 'Status'
 				click_button update
 			end

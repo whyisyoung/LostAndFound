@@ -16,12 +16,12 @@ FactoryGirl.define do
 
 	factory :lost_item do
 		lost_time 	DateTime.now
-		detail 			'A white cup'
-		place 			'Library'
-		status 			'unclaimed'
-		finder 			'Lin'
-		phone 			'18817551234'
-		category_id 5
+		detail 		'A white cup'
+		place 		'Library'
+		status 		'unclaimed'
+		finder 		'Lin'
+		phone 		'18817551234'
+		category_id 1
 		user
 	end
 end

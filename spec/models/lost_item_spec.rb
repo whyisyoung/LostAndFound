@@ -10,7 +10,7 @@ describe LostItem do
 															 				 status: 'unclaimed',
 															 				 finder: 'Lin',
 															 				 phone:  '18817551234',
-															 				 category_id: 5)
+															 				 category_id: 1)
 	end
 
 	subject { @lost_item }
