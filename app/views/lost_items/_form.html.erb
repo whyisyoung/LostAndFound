@@ -13,7 +13,12 @@
     </div>
   <% end %>
 
-  <%= f.input :lost_time, as: :datetime_picker, input_html: { value: DateTime.now } %>
+  <% if @lost_item.new_record? %> <%# for new operation %>
+    <%= f.input :lost_time, as: :datetime_picker, input_html: { value: DateTime.now } %>
+  <% else %>                      <%# for edit operation %>
+    <%= f.input :lost_time, as: :datetime_picker, input_html: { value: @lost_item.lost_time } %>
+  <% end %>
+
   <%= f.input :detail, input_html: { rows: 4 } %>
   <%= f.input :finder %>
   <%= f.input :phone %>
