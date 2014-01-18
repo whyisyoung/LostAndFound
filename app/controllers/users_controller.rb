@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      sign_in @user
+      log_in @user
     	flash[:success] = 'Welcome to Lost and Found!'
       redirect_to @user
     else
@@ -54,11 +54,11 @@ class UsersController < ApplicationController
         redirect_to @user
       elsif user && @user.update_attributes(params[:user])
         flash[:success] = 'Profile updated'
-        sign_in @user
+        log_in @user
         redirect_to @user
       else
         flash.now[:error] = 'Invalid current password.' unless user
-        sign_in @user
+        log_in @user
         render 'edit'
       end
     end

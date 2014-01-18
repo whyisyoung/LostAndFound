@@ -15,5 +15,6 @@ class LostItem < ActiveRecord::Base
  	validates :category_id, inclusion: { in: 1..6 }
 
   default_scope -> { order 'lost_time DESC' }
+  scope :unclaimed, where(status: 'unclaimed')
 
 end

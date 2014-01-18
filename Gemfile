@@ -9,10 +9,15 @@ gem 'faker', '~> 1.1.2'
 gem 'will_paginate', '~> 3.0.4'
 gem 'bootstrap-will_paginate', '~> 0.0.9'
 gem 'simple_form'
-gem 'rubyzip',  "~> 0.9.9"
+gem 'rubyzip',  "~> 0.9.9" # because guard do not work well under mac
+gem 'activeadmin'
+gem "meta_search", '>= 1.1.0.pre'
+
 # SORRY! But the 'datetimepicker-rails' name in RubyGems repo already taken.
 gem 'datetimepicker-rails', require: 'datetimepicker-rails',
                             git: 'git://github.com/zpaulovics/datetimepicker-rails.git'
+
+gem 'pry-rails', :group => :development
 
 group :development, :test do
   gem 'sqlite3', '~> 1.3.7'
@@ -27,9 +32,9 @@ end
 group :test do
   gem 'selenium-webdriver', '~> 2.0.0'
   gem 'capybara', '~> 2.1.0'
-  
+
   # use next line in linux
-  # gem 'libnotify', '~> 0.8.0' 
+  # gem 'libnotify', '~> 0.8.0'
 
   gem 'growl', '1.0.3' # for OS X
 

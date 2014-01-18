@@ -71,7 +71,7 @@ describe "Authentication" do
           describe "when signing in again" do
             before do
               click_link 'Sign out'
-              sign_in user
+              log_in user
             end
 
             it "should render the default (profile) page" do
@@ -140,7 +140,7 @@ describe "Authentication" do
 
     describe "for signed_in users" do
       let(:user) { FactoryGirl.create(:user) }
-      before { sign_in user }
+      before { log_in user }
 
       describe "when attempting to visit register page" do
         before { visit register_path }
@@ -156,7 +156,7 @@ describe "Authentication" do
     describe "as wrong user" do
       let(:user) { FactoryGirl.create(:user)}
       let(:wrong_user) { FactoryGirl.create(:user, email: 'wrong@example.com') }
-      before { sign_in user, no_capybara: true }
+      before { log_in user, no_capybara: true }
 
       describe "visiting Users#edit page" do
         before { visit edit_user_path(wrong_user) }
@@ -173,7 +173,7 @@ describe "Authentication" do
       let(:user) { FactoryGirl.create(:user) }
       let(:non_admin) { FactoryGirl.create(:user) }
 
-      before { sign_in non_admin, no_capybara: true }
+      before { log_in non_admin, no_capybara: true }
 
       describe "submitting a DELETE request to the Users#destroy action" do
         before { delete user_path(user) }

@@ -8,7 +8,9 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ * Do not require_tree . because of active_admin style is not compatible with application.
+ *
  *= require_self
  *= require bootstrap-datetimepicker
- *= require_tree .
+ *= require custom
  */

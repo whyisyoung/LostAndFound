@@ -7,7 +7,7 @@ describe "User Pages" do
   describe "sign out" do
     let(:user) { FactoryGirl.create(:user) }
     before :each do
-      sign_in user
+      log_in user
     end
     it "should sign out a user" do
       click_link 'Sign out'
@@ -99,7 +99,7 @@ describe "User Pages" do
     describe "user visits his own profile" do
 
       before do
-        sign_in user
+        log_in user
         visit user_path(user)
       end
 
@@ -109,7 +109,7 @@ describe "User Pages" do
     describe "admin user visits the user's profile" do
 
       before do
-        sign_in admin
+        log_in admin
         visit user_path(user)
       end
 
@@ -119,7 +119,7 @@ describe "User Pages" do
     describe "another user visits the user's profile" do
 
       before do
-        sign_in another_user
+        log_in another_user
         visit user_path(user)
       end
 
@@ -153,7 +153,7 @@ describe "User Pages" do
 
   describe "index" do
     before do
-      sign_in FactoryGirl.create(:user)
+      log_in FactoryGirl.create(:user)
       FactoryGirl.create(:user, name: 'Bob', email: 'bob@example.com')
       FactoryGirl.create(:user, name: 'Ben', email: 'ben@example.com')
       visit users_path
@@ -185,7 +185,7 @@ describe "User Pages" do
 
         before do
           click_link 'Sign out'
-          sign_in admin
+          log_in admin
           visit users_path
         end
 
@@ -203,7 +203,7 @@ describe "User Pages" do
   describe "edit" do
     let(:user) { FactoryGirl.create(:user) }
     before do
-      sign_in user
+      log_in user
       visit edit_user_path(user)
     end
 
