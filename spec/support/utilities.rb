@@ -1,6 +1,6 @@
 include ApplicationHelper
 
-def log_in( user, options={} )
+def log_in(user, options={})
 	if options[:no_capybara]
 		# Sign in when not using Capybara.
 		remember_token = User.new_remember_token
@@ -14,3 +14,9 @@ def log_in( user, options={} )
 	end
 end
 
+def log_in_admin(admin)
+	visit new_admin_user_session_path
+	fill_in "Email",    with: admin.email
+	fill_in "Password", with: admin.password
+	click_button "Login"
+end

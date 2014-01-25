@@ -8,7 +8,7 @@ describe "LostItem pages nested with User" do
 		let(:submit) { 'Create Lost item'}
 		let!(:category) { FactoryGirl.create(:category) }
 		before do
-			sign_in user
+			log_in user
 			visit new_user_lost_item_path(user)
 		end
 
@@ -30,13 +30,13 @@ describe "LostItem pages nested with User" do
 
 		describe "with valid information" do
 			before do
-				fill_in 'Lost time', 		with: DateTime.now
+				fill_in 'Lost time', 	with: DateTime.now
 				fill_in 'Detail',			with: 'A white cup'
 				fill_in 'Finder',			with: 'Lin'
 				fill_in 'Phone',			with: 18817551234
-				select 'unclaimed',			from: 'Status'
+				select 'unclaimed',		from: 'Status'
 				fill_in 'Place',			with: 'Library'
-				select 'electronics',		from: 'Category'
+				select 'electronics',	from: 'Category'
 			end
 
 			it "should create a lost_item" do
@@ -60,7 +60,7 @@ describe "LostItem pages nested with User" do
 		let(:update) { 'Update Lost item' }
 
 		before do
-			sign_in user
+			log_in user
 			visit edit_user_lost_item_path(user, lost_item)
 		end
 

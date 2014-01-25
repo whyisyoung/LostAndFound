@@ -3,7 +3,7 @@ ActiveAdmin.register LostItem do
 	scope :unclaimed
 	index do
 		selectable_column
-		column :id do |item|
+		column :id, :sortable => :id do |item|
 			link_to item.id, admin_lost_item_path(item)
 		end
 		columns_to_exclude = ["id", "created_at", "updated_at", "category_id", "user_id"]

@@ -4,6 +4,6 @@
 	<%# Admin user can delete other users except himself.  %>
 	<% if current_signed_in_user.admin? && !current_signed_in_user?(user) %>
 		| <%= link_to "delete", user, method: :delete,
-																  data: { confirm: "You sure?"} %>
+									  data: { confirm: "You sure?"} %>
 	<% end %>
 </li>

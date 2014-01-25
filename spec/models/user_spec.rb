@@ -33,13 +33,11 @@ describe User do
     it { should be_admin }
   end
 
+  # shared examples for User and AdminUser
+  it_should_behave_like "correct user"
+
   describe "when name is not present" do
   	before { @user.name = ' ' }
-  	it { should_not be_valid }
-  end
-
-  describe "when email is not present" do
-  	before { @user.email = '' }
   	it { should_not be_valid }
   end
 
@@ -69,16 +67,6 @@ describe User do
   	end
   end
 
-  describe "when email address is already taken" do
-  	before do
-  		user_with_same_email = @user.dup
-  		user_with_same_email.email = @user.email.upcase
-  		user_with_same_email.save
-  	end
-
-  	it { should_not be_valid }
-  end
-
   describe "email address with mixed case" do
   	let (:mixed_case_email) { 'Foo@ExAMPle.Com' }
 
@@ -94,16 +82,6 @@ describe User do
   		@user = User.new(name: 'Example User', email: 'user@example.com',
   											password: ' ', password_confirmation: ' ')
   	end
-  	it { should_not be_valid }
-  end
-
-  describe "when password doen't match confirmation" do
-  	before { @user.password_confirmation = 'mismatch' }
-  	it { should_not be_valid }
-  end
-
-  describe "with a password that's too short" do
-  	before { @user.password = @user.password_confirmation = 'a' * 5 }
   	it { should_not be_valid }
   end
 

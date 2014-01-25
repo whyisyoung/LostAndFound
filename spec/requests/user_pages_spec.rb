@@ -6,7 +6,7 @@ describe "User Pages" do
 
   describe "sign out" do
     let(:user) { FactoryGirl.create(:user) }
-    before :each do
+    before(:each) do
       log_in user
     end
     it "should sign out a user" do

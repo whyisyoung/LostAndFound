@@ -8,7 +8,7 @@
 					<li><%= link_to 'Help',    help_path %></li>
 
 					<%# Only signed_in user can see drop-down menu, else, log_in link. %>
-					<% if signed_in? %>
+					<% if logged_in? %>
 						<li><%= link_to 'Users', users_path %></li>
 						<li id="fat-menu" class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">

@@ -5,6 +5,8 @@ require 'spork'
 
 Spork.prefork do
   ENV["RAILS_ENV"] ||= 'test'
+  require "rails/application"
+  Spork.trap_method(Rails::Application::RoutesReloader, :reload!) # Rails 3.1 or 3.2
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
   require 'rspec/autorun'

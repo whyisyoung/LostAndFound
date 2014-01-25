@@ -10,6 +10,12 @@ FactoryGirl.define do
 		end
 	end
 
+	factory :admin_user do
+		email 'test@test.com'
+		password 'password'
+		password_confirmation 'password'
+	end
+
 	factory :category do
 		name 'electronics'
 	end

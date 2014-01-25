@@ -12,7 +12,6 @@ ActiveAdmin.register User do
 		column :name
 		column :email
 		column "Update Time", :updated_at
-		column :admin
 		default_actions
 	end
 end
