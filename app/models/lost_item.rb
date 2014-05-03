@@ -17,4 +17,9 @@ class LostItem < ActiveRecord::Base
   default_scope -> { order 'lost_time DESC' }
   scope :unclaimed, where(status: 'unclaimed')
 
+  def self.show_page(page)
+    paginate :per_page => 15, :page => page,
+    :order => 'lost_time DESC'
+  end
+
 end

@@ -12,14 +12,14 @@ class UsersController < ApplicationController
   end
 
   def new
-  	@user = User.new
+    @user = User.new
   end
 
   def create
     @user = User.new(params[:user])
     if @user.save
       log_in @user
-    	flash[:success] = 'Welcome to Lost and Found!'
+      flash[:success] = 'Welcome to Lost and Found!'
       redirect_to @user
     else
       render 'new'
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   end
 
   def show
-  	@user = User.find(params[:id])
+    @user = User.find(params[:id])
     @lost_items =@user.lost_items.paginate(page: params[:page])
   end
 

@@ -67,29 +67,6 @@ ActiveRecord::Schema.define(:version => 20140118075832) do
 
   add_index "lost_items", ["user_id", "created_at"], :name => "index_lost_items_on_user_id_and_created_at"
 
-  create_table "sqlite_sp_functions", :id => false, :force => true do |t|
-    t.text "name"
-    t.text "text"
-  end
-
-# Could not dump table "sqlite_stat1" because of following StandardError
-#   Unknown type '' for column 'tbl'
-
-# Could not dump table "sqlite_stat4" because of following StandardError
-#   Unknown type '' for column 'tbl'
-
-  create_table "sqlite_vs_links_names", :id => false, :force => true do |t|
-    t.text "name"
-    t.text "alias"
-  end
-
-  create_table "sqlite_vs_properties", :id => false, :force => true do |t|
-    t.text "parentType"
-    t.text "parentName"
-    t.text "propertyName"
-    t.text "propertyValue"
-  end
-
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"

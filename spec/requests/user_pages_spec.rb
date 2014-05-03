@@ -80,13 +80,17 @@ describe "User Pages" do
                             href: user_lost_item_path(user, item1)) }
       it { should have_link(item2.detail,
                             href: user_lost_item_path(user, item2)) }
+      it { should_not have_link('New lost item',
+                            href: new_user_lost_item_path(user)) }
     end
 
     # Current logged_in user(or admin) visits his own profile,
     # he can edit or destroy those posted lost_items.
     shared_examples_for "authenticated user" do
+      it { should have_link('New lost item',
+                            href: new_user_lost_item_path(user)) }
       it { should have_link('edit',
-                            href: edit_user_lost_item_path(user,item1)) }
+                            href: edit_user_lost_item_path(user, item1)) }
       it { should have_link('delete',
                             href: user_lost_item_path(user, item1)) }
       it "should be able to delete a lost_item" do

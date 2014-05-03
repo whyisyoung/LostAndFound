@@ -7,6 +7,12 @@
 				<%= @user.name %>
 			</h1>
 		</section>
+		<section>
+			<% if current_signed_in_user?(@user) or
+				  current_signed_in_user.admin?  %>
+				<%= link_to "New lost item", new_user_lost_item_path(@user), class: "btn btn-large btn-primary" %>
+			<% end %>
+		</section>
 	</aside>
 
 	<%# Show all the lost_items posted by the user.  %>

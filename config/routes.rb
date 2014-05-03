@@ -3,7 +3,7 @@ LostAndFound::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  resources :categories
+  resources :categories, only: :show
 
   resources :users do
     resources :lost_items, except: :index

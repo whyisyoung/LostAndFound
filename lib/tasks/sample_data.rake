@@ -29,7 +29,7 @@ namespace :db do
                                 status: "unclaimed",
                                 finder: "Lin",
                                 phone:  "18817551234",
-                                category_id: 5)
+                                category_id: Random.new.rand(1..6))
       end
     end
 
