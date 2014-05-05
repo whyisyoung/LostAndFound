@@ -24,6 +24,8 @@ describe LostItem do
   it { should respond_to(:category_id) }
   it { should respond_to(:user_id) }
   it { should respond_to(:user) }
+  it { should respond_to(:photo) }
+
   its(:user) { should eq user }
 
   it { should be_valid }

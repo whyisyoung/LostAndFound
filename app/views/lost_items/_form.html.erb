@@ -1,4 +1,4 @@
-<%= simple_form_for([@user, @lost_item]) do |f| %>
+<%= simple_form_for([@user, @lost_item], :html => { :multipart => true }) do |f| %>
   <% if @lost_item.errors.any? %>
     <div id="error_explanation">
       <div class="alert alert-error">
@@ -22,10 +22,25 @@
   <%= f.input :detail, input_html: { rows: 4 } %>
   <%= f.input :finder %>
   <%= f.input :phone %>
-  <%= f.input :status, collection: ['unclaimed', 'claimed'],
-                       include_blank: false %>
+  <% if !@lost_item.new_record? %>
+    <%= f.input :status, collection: ['unclaimed', 'claimed'],
+                         include_blank: false %>
+  <% end %>
   <%= f.input :place %>
   <%= f.association :category, include_blank: false %>
+
+  <%#= f.input :photo, as: :file %>
+
+  <%# use following to get a little pretty file upload %>
+  <div class="control-group">
+    <div class="attach-set">
+      <%= f.input :photo, input_html: { hidden: true }, label: 'Photo' %>
+      <div class="input-append">
+        <input id="file-display" class="input-large uneditable-input" type="text">
+        <a id="upload-btn" class="btn"><i class="icon-upload-alt"></i>Browse</a>
+      </div>
+    </div>
+  </div>
 
   <%= f.button :submit, class: "btn btn-large btn-primary" %>
 

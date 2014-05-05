@@ -15,4 +15,5 @@
 //= require bootstrap
 //= require bootstrap-datetimepicker
 //= require turbolinks
+//= require custom
 //= require_tree .

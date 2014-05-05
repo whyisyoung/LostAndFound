@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag('jquery.fancybox.css') %>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -35,6 +37,15 @@
   <%= @lost_item.category.name %>
 </p>
 
+<% if @lost_item.photo.exists? %>
+  <a class="fancybox">
+    <a id="single_image" href=<%= @lost_item.photo %>><%= image_tag @lost_item.photo(:thumb) %></a>
+  </a>
+  <br> <br>
+<% end %>
+
 
 <%= link_to 'Edit', edit_user_lost_item_path(@user, @lost_item) %> |
 <%= link_to 'Back', user_path(@user) %>
+
+<%= javascript_include_tag('jquery.fancybox.pack.js') %>

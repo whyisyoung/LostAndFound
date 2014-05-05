@@ -34,7 +34,6 @@ describe "LostItem pages nested with User" do
         fill_in 'Detail',     with: 'A white cup'
         fill_in 'Finder',     with: 'Lin'
         fill_in 'Phone',      with: 18817551234
-        select 'unclaimed',   from: 'Status'
         fill_in 'Place',      with: 'Library'
         select 'electronics', from: 'Category'
       end

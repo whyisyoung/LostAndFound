@@ -40,10 +40,60 @@ textarea {
 }
 
 .center {
-  text-align: center;
+  //text-align: center;
+  width: 920px;
+  height: 180px;
+  overflow: hidden;
+  position: relative;
+  display: table;
   h1 {
     margin-bottom: 10px;
   }
+  background-color: #eeeeee;
+  color: inherit;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 35px;
+}
+
+.header-left {
+  width: 180px;
+  height: 180px;
+  display: table-cell;
+}
+
+.header-right {
+  width: 760px;
+  display: table-cell;
+}
+
+.logo {
+  width: 180px;
+  height: 180px;
+  display: inline-block;
+}
+
+.site_info {
+  width: 760px;
+  height: 30px;
+  display: inline-block;
+}
+
+.location {
+  width: 760px;
+  height: 30px;
+  display: inline-block;
+}
+
+.item-category {
+  width: 760px;
+  height: 30px;
+  display: inline-block;
+}
+
+.pick-item {
+  margin-left: 75px;
 }
 
 /* typography */

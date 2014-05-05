@@ -12,6 +12,7 @@ gem 'simple_form'
 gem 'rubyzip',  "~> 0.9.9" # because guard do not work well under mac
 gem 'activeadmin'
 gem "meta_search", '>= 1.1.0.pre'
+gem "paperclip", "~> 4.1"
 
 # SORRY! But the 'datetimepicker-rails' name in RubyGems repo already taken.
 gem 'datetimepicker-rails', require: 'datetimepicker-rails',
