@@ -41,7 +41,6 @@ textarea {
 
 .center {
   //text-align: center;
-  width: 920px;
   height: 180px;
   overflow: hidden;
   position: relative;
@@ -53,7 +52,7 @@ textarea {
   color: inherit;
   -webkit-border-radius: 6px;
   border-radius: 6px;
-  padding: 10px;
+  padding: 10px 0 10px 0;
   margin-bottom: 35px;
 }
 
@@ -75,25 +74,31 @@ textarea {
 }
 
 .site_info {
-  width: 760px;
+  margin-left: 100px;
   height: 30px;
+  font-size: 1.7em;
+  color: rgb(69, 160, 160);
   display: inline-block;
 }
 
 .location {
-  width: 760px;
+  //width: 760px;
   height: 30px;
+  margin-left: 500px;
+  font-size: 1.5em;
+  color: rgb(60, 191, 94);
   display: inline-block;
 }
 
 .item-category {
-  width: 760px;
   height: 30px;
+  font-size: 18px;
+  margin-left: 80px;
   display: inline-block;
 }
 
 .pick-item {
-  margin-left: 75px;
+  margin-left: 60px;
 }
 
 /* typography */

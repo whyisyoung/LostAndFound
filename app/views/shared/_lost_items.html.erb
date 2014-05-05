@@ -1,35 +1,41 @@
 <div class="row">
-	<aside class="table-responsive span8">
-		<table class="table table-hover table-bordered">
-			<tr>
-			    <th>时   间</th>
-			    <th>遗失物品</th>
-			    <th>遗失地点</th>
-			    <th> 拾到者</th>
-			  </tr>
+  <aside class="table-responsive span8">
+    <table class="table table-hover table-bordered">
+      <tr>
+          <th>时   间</th>
+          <th>遗失物品</th>
+          <th>遗失地点</th>
+          <th> 拾到者</th>
+        </tr>
 
-			<% @lost_items.each do |lost_item| %>
-				<%# logic things shouldn't be here, but I have no other solutions. %>
-			  <% user = User.find(lost_item.user_id) %>
-			  <tr>
-			    <td><%= lost_item.lost_time.to_date %></td>
+      <% @lost_items.each do |lost_item| %>
+        <%# logic things shouldn't be here, but I have no other solutions. %>
+        <% user = User.find(lost_item.user_id) %>
+        <tr>
+          <td><%= lost_item.lost_time.to_date %></td>
 
-			    <% if lost_item.detail.length > 20 %>
-			    	<td><%= link_to(lost_item.detail[0..20]+"...", user_lost_item_path(user, lost_item)) %></td>
-			    <% else %>
-			    	<td><%= link_to(lost_item.detail,
-			    			user_lost_item_path(user, lost_item)) %></td>
-			    <% end %>
+          <% if lost_item.detail.length > 20 %>
+            <td><%= link_to(lost_item.detail[0..20]+"...", user_lost_item_path(user, lost_item)) %></td>
+          <% else %>
+            <td><%= link_to(lost_item.detail,
+                user_lost_item_path(user, lost_item)) %></td>
+          <% end %>
 
-			    <td><%= lost_item.place %></td>
-			    <td><%= lost_item.finder %></td>
-			    <td id="item_status"><%= lost_item.status %></td>
-			  </tr>
-			<% end %>
-		</table>
-	</aside>
+          <td><%= lost_item.place %></td>
+          <td><%= lost_item.finder %></td>
+          <td id="item_status"><%= lost_item.status %></td>
+        </tr>
+      <% end %>
+    </table>
+  </aside>
 
-	<div class="span4">
-		<%= link_to '我捡到东西了', new_user_lost_item_path(current_signed_in_user), class: "btn btn-large btn-danger pick-item" %>
-	</div>
+  <div class="span4">
+    <% if current_signed_in_user != nil %>
+      <%= link_to '我捡到东西了', new_user_lost_item_path(current_signed_in_user),
+                                class: "btn btn-large btn-danger pick-item" %>
+    <% else %>
+      <%= link_to '我捡到东西了', signin_path,
+                                class: "btn btn-large btn-danger pick-item" %>
+    <% end %>
+  </div>
 </div>
