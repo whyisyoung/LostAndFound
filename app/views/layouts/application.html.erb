@@ -1,67 +1,63 @@
 <!DOCTYPE html>
 <html>
-	<head>
-	  <title><%= full_title( yield(:title) ) %></title>
-	  <link href="//netdna.bootstrapcdn.com/bootstrap/<%= bootstrap_version %>/css/bootstrap.min.css" rel="stylesheet">
+  <head>
+    <title><%= full_title( yield(:title) ) %></title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/<%= bootstrap_version %>/css/bootstrap.min.css" rel="stylesheet">
 
-	  <%= stylesheet_link_tag    "application", media: "all",
-	  											"data-turbolinks-track" => true %>
-	  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-	  <%= javascript_include_tag('my_jquery.js') %>
-	  <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    "application", media: "all",
+                          "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag('my_jquery.js') %>
+    <%= csrf_meta_tags %>
 
-	  <%# Only when IE version < 9, load HTML5 shim. Other browsers are okay.  %>
-	  <%= render 'layouts/shim' %>
-	</head>
-	<body>
-		<%= render 'layouts/header' %>
-		<div class="container">
+    <%# Only when IE version < 9, load HTML5 shim. Other browsers are okay.  %>
+    <%= render 'layouts/shim' %>
+  </head>
+  <body>
+    <%= render 'layouts/header' %>
+    <div class="container">
 
-			<div class="center">
-			<!-- <div class="center hero-unit"> -->
-				<%#  <h1>Welcome to Lost and Found</h1>
-				<p>
-					This is the home page for ECNU lost and found application.
-				</p>
-				<%= link_to 'Sign up now!', register_path,
-			                              class: "btn btn-large btn-primary" %>
-			    <div class="header-left">
-			    	<div class="logo">
-			    		<%= image_tag("logo2.png") %>
-			    	</div>
-			    </div>
+      <div class="center">
+      <!-- <div class="center hero-unit"> -->
+        <%#  <h1>Welcome to Lost and Found</h1>
+        <p>
+          This is the home page for ECNU lost and found application.
+        </p>
+        <%= link_to 'Sign up now!', register_path,
+                                    class: "btn btn-large btn-primary" %>
+          <div class="header-left">
+            <div class="logo">
+              <%= image_tag("logo2.png") %>
+            </div>
+          </div>
 
-				<div class='header-right'>
-			    	<div class="site_info">
-			    		高校失物招领服务平台 <br>
-			    	</div>
-			    	<div class="location">
-			    		华东师大闵行校区
-			    	</div>
-					<div class="item-category">
-					    <ul id='menu'>
-							<li><%= link_to('首页',    root_path) %></li>
-							<li><%= link_to('手机数码', category_path(1)) %></li>
-							<li><%= link_to('校园卡',   category_path(2)) %></li>
-							<li><%= link_to('随身物品', category_path(3)) %></li>
-							<li><%= link_to('书籍',    category_path(4)) %></li>
-							<li><%= link_to('衣物',    category_path(5)) %></li>
-							<li><%= link_to('其他',    category_path(6)) %></li>
-							<!-- <li id=informations><marquee direction=left scrollamount="3">公告：本站仅收录了四个教学楼和图书馆的失物招领信息，后续会扩大范围，欢迎志愿者加入我们！</marquee></li> -->
-						</ul>
-					</div>
-				</div>
-			</div>
+        <div class='header-right'>
+            <%= image_tag("site_info.jpg", class: "site-info-img") %>
+            <%= image_tag("location.jpg", class: "location-img") %>
+          <div class="item-category">
+              <ul class="nav nav-pills">
+                <li><%= link_to('首页',    root_path) %></li>
+                <li><%= link_to('手机数码', category_path(1)) %></li>
+                <li><%= link_to('校园卡',   category_path(2)) %></li>
+                <li><%= link_to('随身物品', category_path(3)) %></li>
+                <li><%= link_to('书籍',    category_path(4)) %></li>
+                <li><%= link_to('衣物',    category_path(5)) %></li>
+                <li><%= link_to('其他',    category_path(6)) %></li>
+                <!-- <li id=informations><marquee direction=left scrollamount="3">公告：本站仅收录了四个教学楼和图书馆的失物招领信息，后续会扩大范围，欢迎志愿者加入我们！</marquee></li> -->
+            </ul>
+          </div>
+        </div>
+      </div>
 
-			<% flash.each do | key, value | %>
-				<%= content_tag( :div, value, class: "alert alert-#{key}" ) %>
-			<% end %>
+      <% flash.each do | key, value | %>
+        <%= content_tag( :div, value, class: "alert alert-#{key}" ) %>
+      <% end %>
 
-			<%= yield %>
+      <%= yield %>
 
-			<%= render 'layouts/footer' %>
-			<%= debug(params) if Rails.env.development? %>
-		</div>
-		<!-- <script src="//netdna.bootstrapcdn.com/bootstrap/<%= bootstrap_version %>/js/bootstrap.min.js"></script> -->
-	</body>
+      <%= render 'layouts/footer' %>
+      <%= debug(params) if Rails.env.development? %>
+    </div>
+    <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/<%= bootstrap_version %>/js/bootstrap.min.js"></script> -->
+  </body>
 </html>

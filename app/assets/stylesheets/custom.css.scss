@@ -73,25 +73,41 @@ textarea {
   display: inline-block;
 }
 
-.site_info {
+/*.site_info {
   margin-left: 100px;
   height: 30px;
   font-size: 1.7em;
   color: rgb(69, 160, 160);
   display: inline-block;
+}*/
+
+.site-info-img {
+  height: 40px;
+  margin: -110px 0px 10px 80px;
 }
 
-.location {
+/*.location {
   //width: 760px;
-  height: 30px;
-  margin-left: 500px;
+  height: 35px;
+
   font-size: 1.5em;
   color: rgb(60, 191, 94);
   display: inline-block;
+}*/
+
+.location-img {
+  height: 35px;
+  margin: -60px 0px 10px 428px;
+}
+
+.nav {
+  margin-left: 80px;
+  font-size: 18px;
+  margin-top: 22px;
 }
 
 .item-category {
-  height: 30px;
+  height: 34px;
   font-size: 18px;
   margin-left: 80px;
   display: inline-block;
