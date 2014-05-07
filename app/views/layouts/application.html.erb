@@ -2,7 +2,7 @@
 <html>
   <head>
     <title><%= full_title( yield(:title) ) %></title>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/<%= bootstrap_version %>/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/<%= bootstrap_version %>/css/bootstrap.min.css" rel="stylesheet"> -->
 
     <%= stylesheet_link_tag    "application", media: "all",
                           "data-turbolinks-track" => true %>
@@ -18,7 +18,7 @@
     <div class="container">
 
       <div class="center">
-      <!-- <div class="center hero-unit"> -->
+        <!-- <div class="center hero-unit"> -->
         <%#  <h1>Welcome to Lost and Found</h1>
         <p>
           This is the home page for ECNU lost and found application.
@@ -43,7 +43,6 @@
                 <li><%= link_to('书籍',    category_path(4)) %></li>
                 <li><%= link_to('衣物',    category_path(5)) %></li>
                 <li><%= link_to('其他',    category_path(6)) %></li>
-                <!-- <li id=informations><marquee direction=left scrollamount="3">公告：本站仅收录了四个教学楼和图书馆的失物招领信息，后续会扩大范围，欢迎志愿者加入我们！</marquee></li> -->
             </ul>
           </div>
         </div>

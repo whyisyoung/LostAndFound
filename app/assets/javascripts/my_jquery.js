@@ -1,4 +1,4 @@
-$('document').ready(function() {
+$(document).ready(function() {
 
     // blue and white altertive for unclaimed items, green for claimed items.
 
@@ -12,6 +12,8 @@ $('document').ready(function() {
         }
         $(this).hide();
     });
+
+    $('.hidden').hide();
 
 
 
@@ -35,5 +37,13 @@ $('document').ready(function() {
     $('ul.nav-pills a').filter(function() {
         return this.href == url;
     }).parent().addClass('active');
+
+
+    // for datatable
+    $('#lost_item_datatable').dataTable();
+    // $('#lost_item_datatable').dataTable({
+    //     //paging: false,
+    //     ordering: false
+    // });
 
 });

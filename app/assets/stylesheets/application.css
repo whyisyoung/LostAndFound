@@ -11,6 +11,7 @@
  * Do not require_tree . because of active_admin style is not compatible with application.
  *
  *= require_self
+ *= require bootstrap
  *= require bootstrap-datetimepicker
  *= require custom
  */

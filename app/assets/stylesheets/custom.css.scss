@@ -105,6 +105,10 @@ textarea {
   margin-top: 22px;
 }
 
+.navbar {
+  min-height: 40px;
+}
+
 .item-category {
   height: 34px;
   font-size: 18px;
@@ -303,34 +307,4 @@ aside {
 
 p.new_user {
   margin-left: 120px;
-}
-
-
-/* Menu */
-
-#menu {
-  width:100%;
-  height: 40px;
-  margin: 0;
-}
-
-#menu ul {
-  margin: 0 0 0 200px;
-  list-style: none;
-  line-height: normal;
-}
-
-#menu li {
-  display: inline;
-}
-
-#menu a {
-  display: block;
-  float:left;
-  height: 26px;
-  padding: 14px 18px 0 20px;
-  background: url(/images/img06.gif) no-repeat;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-weight: bold;
 }
