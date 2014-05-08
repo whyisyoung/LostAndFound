@@ -10,6 +10,8 @@ class LostItemsController < ApplicationController
 
   def show
     @lost_item = LostItem.find(params[:id])
+    @comments = @lost_item.comment_threads.order('created_at desc')
+    @new_comment = Comment.build_from(@lost_item, current_signed_in_user, "")
   end
 
   # Only signed_in user can create and save

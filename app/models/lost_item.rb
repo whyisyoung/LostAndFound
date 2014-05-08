@@ -1,8 +1,11 @@
 class LostItem < ActiveRecord::Base
-	belongs_to :user
+  belongs_to :user
   belongs_to :category
+
+  acts_as_commentable
+
   attr_accessible :category_id, :detail, :finder, :lost_time,
-  								:phone, :place, :status, :user_id, :photo
+                  :phone, :place, :status, :user_id, :photo
 
   before_save { status = 'unclaimed' }
 
@@ -15,11 +18,11 @@ class LostItem < ActiveRecord::Base
 
   VALID_PHONE_REGEX = /\A(13[0-9]|15[012356789]|18[0236789]|14[57])[0-9]{8}\z/
   validates :phone,  length: { is: 11,
-  														 message: 'Phone number should be 11 digits!' },
-  								 	 format: { with: VALID_PHONE_REGEX },
-  								 	 allow_blank: true
+                               message: 'Phone number should be 11 digits!' },
+                     format: { with: VALID_PHONE_REGEX },
+                     allow_blank: true
 
- 	validates :category_id, inclusion: { in: 1..6 }
+  validates :category_id, inclusion: { in: 1..6 }
 
   default_scope -> { order 'lost_time DESC' }
   scope :unclaimed, where(status: 'unclaimed')

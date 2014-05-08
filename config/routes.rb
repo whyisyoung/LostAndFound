@@ -9,6 +9,8 @@ LostAndFound::Application.routes.draw do
     resources :lost_items, except: :index
   end
 
+  resources :comments, only: [:create, :destroy]
+
   resources :sessions,   only: [ :new, :create, :destroy ]
 
   root to: 'index_pages#home'
