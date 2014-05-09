@@ -6,7 +6,7 @@
     <table id="lost_item_datatable" class="table table-hover">
       <thead>
           <tr>
-              <th>时   间</th>
+              <th>发布时间</th>
               <th>遗失物品</th>
               <th>遗失地点</th>
               <th>拾到者</th>
@@ -17,7 +17,7 @@
         <% @lost_items.each do |lost_item| %>
           <% user = User.find(lost_item.user_id) %>
           <tr>
-              <td><%= lost_item.lost_time.to_date %></td>
+              <td><%= lost_item.created_at.to_date %></td>
               <% if lost_item.detail.length > 20 %>
                   <td><%= link_to(lost_item.detail[0..20]+"...", user_lost_item_path(user, lost_item)) %></td>
                 <% else %>

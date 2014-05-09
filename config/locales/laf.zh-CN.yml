@@ -1,0 +1,44 @@
+zh-CN:
+  app:
+    titles:
+      home: '首页'
+      help: '帮助'
+      about: '关于我们'
+      contact: '联系我们'
+      login: '登录'
+      register: '注册'
+      edit_lost_item: '修改失物'
+      lost_item_info: '招领信息详情'
+    nav:
+      home: '首页'
+      help: '帮助'
+      about: '关于'
+      contact: '联系我们'
+      new_item: '捡到东西'
+      profile: '个人主页'
+      settings: '资料设置'
+      logout: '登出'
+      login: '登录'
+      signup: '注册'
+    footer:
+      support: '华东师大 L+F 小组'
+    user:
+      edit:
+        current_password: '旧密码'
+    button:
+      new_account: '注册 L+F '
+      signin: '登陆'
+      save_changes: '保存更改'
+    link:
+      register: '立即注册!'
+      show: '显示'
+      edit: '修改'
+      back: '返回'
+      delete: '删除'
+      change_gravatar: '修改头像'
+    text:
+      new_user: '还没有账号？'
+      comments: '评论'
+      update_profile: '更新资料'
+      new_item: '新建失物'
+      my_items: '我捡到的失物'

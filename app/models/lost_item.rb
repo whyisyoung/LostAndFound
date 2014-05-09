@@ -24,13 +24,13 @@ class LostItem < ActiveRecord::Base
 
   validates :category_id, inclusion: { in: 1..6 }
 
-  default_scope -> { order 'lost_time DESC' }
+  default_scope -> { order 'created_at DESC' }
   scope :unclaimed, where(status: 'unclaimed')
 
 
   def self.show_page(page)
     paginate :per_page => 15, :page => page,
-    :order => 'lost_time DESC'
+    :order => 'created_at DESC'
   end
 
 end

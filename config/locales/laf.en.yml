@@ -1,0 +1,44 @@
+en:
+  app:
+    titles:
+      home: 'Home'
+      help: 'Help'
+      about: 'About Us'
+      contact: 'Contact Us'
+      login: 'Sign in'
+      register: 'Register'
+      edit_lost_item: 'Edit Lost Item'
+      lost_item_info: 'Found Item Info'
+    nav:
+      home: 'Home'
+      help: 'Help'
+      about: 'About'
+      contact: 'Contact Us'
+      new_item: 'New lost item'
+      profile: 'Profile'
+      settings: 'Settings'
+      logout: 'Sign out'
+      login: 'Sign in'
+      signup: 'Sign up'
+    footer:
+      support: 'Provided By ECNU L+F Group'
+    user:
+      edit:
+        current_password: 'Current Password'
+    button:
+      new_account: 'Create my account'
+      signin: 'Sign in'
+      save_changes: 'Save changes'
+    link:
+      register: 'Sign up now'
+      show: 'Show'
+      edit: 'Edit'
+      back: 'Back'
+      delete: 'Delete'
+      change_gravatar: 'change'
+    text:
+      new_user: 'New user?'
+      comments: 'Comments'
+      update_profile: 'Update your profile'
+      new_item: 'New Lost Item'
+      my_items: 'Found items'

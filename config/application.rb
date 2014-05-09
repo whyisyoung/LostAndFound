@@ -40,6 +40,7 @@ module LostAndFound
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    config.i18n.default_locale = :'zh-CN'
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
@@ -72,6 +73,7 @@ module LostAndFound
     # or load models when precompiling assets.
     config.assets.initialize_on_precompile = false
 
-    config.i18n.enforce_available_locales = true
+    #config.i18n.enforce_available_locales = true
+    I18n.enforce_available_locales = true
   end
 end

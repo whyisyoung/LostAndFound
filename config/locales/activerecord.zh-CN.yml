@@ -1,0 +1,16 @@
+zh-CN:
+  active_record:
+    models:
+      lost_item: '失物'
+      user: '用户'
+      comment: '评论'
+      category: '类别'
+    attributes:
+      lost_item:
+        lost_time: '丢失时间'
+        detail: '详情描述'
+        finder: '拾到者'
+        phone: '联系电话'
+        place: '丢失地点'
+        status: '认领状态'
+        photo: '图片'

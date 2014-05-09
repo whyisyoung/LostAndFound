@@ -2,38 +2,40 @@
 
 <p id="notice"><%= notice %></p>
 
+<h3><%= t('app.titles.lost_item_info') %></h3>
+
 <p>
-  <b>Lost time:</b>
+  <b><%= t('active_record.attributes.lost_item.lost_time') %>: </b>
   <%= @lost_item.lost_time %>
 </p>
 
 <p>
-  <b>Detail:</b>
+  <b><%= t('active_record.attributes.lost_item.detail') %>: </b>
   <%= @lost_item.detail %>
 </p>
 
 <p>
-  <b>Finder:</b>
+  <b><%= t('active_record.attributes.lost_item.finder') %>: </b>
   <%= @lost_item.finder %>
 </p>
 
 <p>
-  <b>Phone:</b>
+  <b><%= t('active_record.attributes.lost_item.phone') %>: </b>
   <%= @lost_item.phone %>
 </p>
 
 <p>
-  <b>Status:</b>
-  <%= @lost_item.status %>
+  <b><%= t('active_record.attributes.lost_item.status') %>: </b>
+  <%= @lost_item.status.to_s %>
 </p>
 
 <p>
-  <b>Place:</b>
+  <b><%= t('active_record.attributes.lost_item.place') %>: </b>
   <%= @lost_item.place %>
 </p>
 
 <p>
-  <b>Category:</b>
+  <b><%= t('active_record.models.category') %>: </b>
   <%= @lost_item.category.name %>
 </p>
 
@@ -45,11 +47,11 @@
 <% end %>
 
 
-<%= link_to 'Edit', edit_user_lost_item_path(@user, @lost_item) %> |
-<%= link_to 'Back', user_path(@user) %>
+<%= link_to t('app.link.edit'), edit_user_lost_item_path(@user, @lost_item) %> |
+<%= link_to t('app.link.back'), user_path(@user) %>
 
 <div class="comments">
-  <h3>Comments</h3>
+  <!-- <h4><%= t('app.text.comments') %></h4> -->
   <%= render :partial => 'comments/form', :locals => { :comment => @new_comment } %>
   <%= render :partial => 'comments/comment', :collection => @comments, :as => :comment %>
 </div>

@@ -1,11 +1,11 @@
 <footer class="footer">
-	<small>
-		Provided By ECNU L+F Group
-	</small>
-	<nav>
-		<ul>
-			<li><%= link_to 'About',   about_path %></li>
-			<li><%= link_to 'Contact', contact_path %></li>
-		</ul>
-	</nav>
+    <small>
+        <%= t('app.footer.support') %>
+    </small>
+    <nav>
+        <ul>
+            <li><%= link_to t('app.nav.about'),   about_path %></li>
+            <li><%= link_to t('app.nav.contact'), contact_path %></li>
+        </ul>
+    </nav>
 </footer>

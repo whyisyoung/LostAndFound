@@ -1,30 +1,30 @@
 <% provide(:title, 'Edit user') %>
-<h1>Update your profile</h1>
+<h1><%= t('app.text.update_profile') %></h1>
 
 <div class="row">
-	<div class="span6 offset3">
-		<%= simple_form_for(@user) do |f| %>
-			<%# SMALL: This maybe not needed any more. %>
-			<%= render 'shared/error_messages' %>
+    <div class="span6 offset3">
+        <%= simple_form_for(@user) do |f| %>
+            <%# SMALL: This maybe not needed any more. %>
+            <%= render 'shared/error_messages' %>
 
-			<%= f.input :name, label: "New Name" %>
-			<%= f.input :email, label: "New Email" %>
+            <%= f.input :name %>
+            <%= f.input :email %>
 
-			<%# HACK: password_field_tag cannot work well with simple_form,
-								maybe devise gem would be okay. %>
-			<div class="control-group password required">
-				<%= f.label :current_password, label: "Current Password",
-																			 required: true %>
-				<%= password_field_tag :current_password, params[:current_password] %>
-			</div>
+            <%# HACK: password_field_tag cannot work well with simple_form,
+                                maybe devise gem would be okay. %>
+            <div class="control-group password required">
+                <%= f.label :current_password, label: t('app.user.edit.current_password'),
+                                                                             required: true %>
+                <%= password_field_tag :current_password, params[:current_password] %>
+            </div>
 
-			<%= f.input :password, label: "New Password", placeholder: "Optional" %>
-			<%= f.input :password_confirmation, label: "Confirm New Password" %>
-			<%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+            <%= f.input :password %>
+            <%= f.input :password_confirmation %>
+            <%= f.submit t('app.button.save_changes'), class: "btn btn-large btn-primary" %>
 
-		<% end %>
+        <% end %>
 
-		<%= gravatar_for @user, size: 52, class: "change_gravatar" %>
-		<a href="http://gravatar.com/emails" target="_blank">change</a>
-	</div>
+        <%= gravatar_for @user, size: 52, class: "change_gravatar" %>
+        <a href="http://gravatar.com/emails" target="_blank"><%= t('app.link.change_gravatar') %></a>
+    </div>
 </div>

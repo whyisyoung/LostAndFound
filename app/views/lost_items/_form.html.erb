@@ -23,10 +23,11 @@
   <%= f.input :finder %>
   <%= f.input :phone %>
   <% if !@lost_item.new_record? %>
-    <%= f.input :status, collection: ['unclaimed', 'claimed'],
+    <%= f.input :status, collection: [:unclaimed, :claimed],
                          include_blank: false %>
   <% end %>
   <%= f.input :place %>
+
   <%= f.association :category, include_blank: false %>
 
   <%#= f.input :photo, as: :file %>
@@ -34,7 +35,7 @@
   <%# use following to get a little pretty file upload %>
   <div class="control-group">
     <div class="attach-set">
-      <%= f.input :photo, input_html: { hidden: true }, label: 'Photo' %>
+      <%= f.input :photo, input_html: { hidden: true } %>
       <div class="input-append">
         <input id="file-display" class="input-large uneditable-input" type="text">
         <a id="upload-btn" class="btn"><i class="icon-upload-alt"></i>Browse</a>

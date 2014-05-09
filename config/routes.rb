@@ -5,7 +5,7 @@ LostAndFound::Application.routes.draw do
 
   resources :categories, only: :show
 
-  resources :users do
+  resources :users, except: :index do
     resources :lost_items, except: :index
   end
 

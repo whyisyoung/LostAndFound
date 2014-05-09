@@ -17,10 +17,10 @@ describe "User Pages" do
 
 
   describe "register" do
-  	before { visit register_path }
-  	let(:submit) { 'Create my account' }
+    before { visit register_path }
+    let(:submit) { 'Create my account' }
 
-    it { should have_content('Register') }
+    # it { should have_content('Register') }
     it { should have_title(full_title('Register')) }
 
     describe "with invalid information" do
@@ -55,12 +55,12 @@ describe "User Pages" do
         it { should have_title(user.name) }
         it { should have_selector('div.alert.alert-success', text: 'Welcome') }
       end
-  	end
+    end
   end
 
 
   describe "profile page" do
-  	let(:user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryGirl.create(:user) }
     let(:another_user) { FactoryGirl.create(:user) }
     let(:admin) { FactoryGirl.create(:admin) }
 
@@ -87,15 +87,15 @@ describe "User Pages" do
     # Current logged_in user(or admin) visits his own profile,
     # he can edit or destroy those posted lost_items.
     shared_examples_for "authenticated user" do
-      it { should have_link('New lost item',
+      it { should have_link(I18n.t('app.text.new_item'),
                             href: new_user_lost_item_path(user)) }
-      it { should have_link('edit',
+      it { should have_link(I18n.t('app.link.edit'),
                             href: edit_user_lost_item_path(user, item1)) }
-      it { should have_link('delete',
+      it { should have_link(I18n.t('app.link.delete'),
                             href: user_lost_item_path(user, item1)) }
       it "should be able to delete a lost_item" do
         expect do
-          click_link('delete', match: :first)
+          click_link(I18n.t('app.link.delete'), match: :first)
         end.to change(LostItem, :count).by(-1)
       end
     end
@@ -155,54 +155,56 @@ describe "User Pages" do
     end
   end
 
-  describe "index" do
-    before do
-      log_in FactoryGirl.create(:user)
-      FactoryGirl.create(:user, name: 'Bob', email: 'bob@example.com')
-      FactoryGirl.create(:user, name: 'Ben', email: 'ben@example.com')
-      visit users_path
-    end
+  # Listing all the users is deprecated.
 
-    it { should have_title('All users') }
-    it { should have_content('All users') }
+  # describe "index" do
+  #   before do
+  #     log_in FactoryGirl.create(:user)
+  #     FactoryGirl.create(:user, name: 'Bob', email: 'bob@example.com')
+  #     FactoryGirl.create(:user, name: 'Ben', email: 'ben@example.com')
+  #     visit users_path
+  #   end
 
-    describe "pagination" do
+  #   it { should have_title('All users') }
+  #   it { should have_content('All users') }
 
-      before(:all) { 30.times { FactoryGirl.create(:user) } }
-      after(:all)  { User.delete_all }
+  #   describe "pagination" do
 
-      it { should have_selector('div.pagination') }
-    end
+  #     before(:all) { 30.times { FactoryGirl.create(:user) } }
+  #     after(:all)  { User.delete_all }
 
-    it "should list each user" do
-      User.paginate(page: 1).each do |user|
-        expect(page).to have_selector('li', text: user.name)
-      end
-    end
+  #     it { should have_selector('div.pagination') }
+  #   end
 
-    describe "delele links" do
+  #   it "should list each user" do
+  #     User.paginate(page: 1).each do |user|
+  #       expect(page).to have_selector('li', text: user.name)
+  #     end
+  #   end
 
-      it { should_not have_link('delele') }
+  #   describe "delele links" do
 
-      describe "as an admin user" do
-        let(:admin) { FactoryGirl.create(:admin) }
+  #     it { should_not have_link('delele') }
 
-        before do
-          click_link 'Sign out'
-          log_in admin
-          visit users_path
-        end
+  #     describe "as an admin user" do
+  #       let(:admin) { FactoryGirl.create(:admin) }
 
-        it { should have_link('delete', href: user_path(User.first)) }
-        it "should be able to delete another user" do
-          expect do
-            click_link('delete', match: :first)
-          end.to change(User, :count).by(-1)
-        end
-        it { should_not have_link('delete', href: user_path(admin)) }
-      end
-    end
-  end
+  #       before do
+  #         click_link 'Sign out'
+  #         log_in admin
+  #         visit users_path
+  #       end
+
+  #       it { should have_link('delete', href: user_path(User.first)) }
+  #       it "should be able to delete another user" do
+  #         expect do
+  #           click_link('delete', match: :first)
+  #         end.to change(User, :count).by(-1)
+  #       end
+  #       it { should_not have_link('delete', href: user_path(admin)) }
+  #     end
+  #   end
+  # end
 
   describe "edit" do
     let(:user) { FactoryGirl.create(:user) }

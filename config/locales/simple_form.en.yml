@@ -1,26 +1,44 @@
 en:
   simple_form:
-    "yes": 'Yes'
-    "no": 'No'
-    required:
-      text: 'required'
-      mark: '*'
-      # You can uncomment the line below if you need to overwrite the whole required html.
-      # When using html, text and mark won't be used.
-      # html: '<abbr title="required">*</abbr>'
-    error_notification:
-      default_message: "Please review the problems below:"
-    # Labels and hints examples
-    # labels:
-    #   defaults:
-    #     password: 'Password'
-    #   user:
-    #     new:
-    #       email: 'E-mail to sign in.'
-    #     edit:
-    #       email: 'E-mail.'
-    # hints:
-    #   defaults:
-    #     username: 'User name to sign in.'
-    #     password: 'No special characters, please.'
-
+    labels:
+      defaults:
+        name: 'Name'
+        email: 'Email'
+        password: 'Password'
+        password_confirmation: 'Confirm password'
+        edit:
+          name: 'New Name'
+          email: 'New Email'
+          password: 'New Password'
+          password_confirmation: 'Confirm New Password'
+      lost_item:
+        lost_time: 'Lost time'
+        detail: 'Detail'
+        finder: 'Finder'
+        phone: 'Phone'
+        place: 'Place'
+        status: 'Status'
+        category: 'Category'
+        photo: 'Photo'
+    placeholders:
+      user:
+        password: ''
+        new:
+          password: '6 - 20 characters'
+        edit:
+          password: 'Optional'
+    include_blanks:
+      lost_item:
+        phone: 'Rather not say'
+    options:
+      lost_item:
+        status:
+          claimed: 'claimed'
+          unclaimed: 'unclaimed'
+        category_id:
+          electronics: 'electronics'
+          cards: 'cards'
+          belongings: 'belongings'
+          books: 'books'
+          clothes: 'clothes'
+          other: 'other'

@@ -1,0 +1,47 @@
+zh-CN:
+  simple_form:
+    labels:
+      defaults:
+        name: '昵称'
+        email: '邮箱'
+        password: '密码'
+        password_confirmation: '确认密码'
+        edit:
+          name: '新昵称'
+          email: '更改邮箱'
+          password: '新密码'
+          password_confirmation: '确认新密码'
+      lost_item:
+        lost_time: '丢失时间'
+        detail: '详情描述'
+        finder: '拾到人'
+        phone: '联系电话'
+        place: '丢失地点'
+        status: '认领情况'
+        category: '类别'
+        photo: '图片'
+      user:
+        name: '昵称'
+        email: '邮箱'
+    placeholders:
+      user:
+        password: ''
+        new:
+          password: '长度应在 6 - 20 位之间'
+        edit:
+          password: '不修改密码可不填'
+    include_blanks:
+      lost_item:
+        phone: '可不填'
+    options:
+      lost_item:
+        status:
+          claimed: '已认领'
+          unclaimed: '无人认领'
+        category_id:
+          electronics: '手机数码'
+          cards: '校园卡'
+          belongings: '随身物品'
+          books: '书本'
+          clothes: '衣物'
+          other: '其他'

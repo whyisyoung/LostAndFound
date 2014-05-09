@@ -13,7 +13,7 @@ describe "LostItem pages nested with User" do
     end
 
     it { should have_title('New Lost Item') }
-    it { should have_content('New lost_item') }
+    it { should have_content(I18n.t('app.text.new_item')) }
 
     describe "with invalid information" do
       it "should not create a lost_item" do
@@ -64,8 +64,8 @@ describe "LostItem pages nested with User" do
     end
 
     describe "page" do
-      it { should have_title('Edit Lost Item') }
-      it { should have_content('Editing lost_item') }
+      it { should have_title(I18n.t('app.titles.edit_lost_item')) }
+      it { should have_content(I18n.t('app.titles.edit_lost_item')) }
     end
 
     describe "with invalid changes" do

@@ -14,15 +14,15 @@ gem 'activeadmin'
 gem "meta_search", '>= 1.1.0.pre'
 gem "paperclip", "~> 4.1"
 gem 'acts_as_commentable_with_threading'
+gem 'rails-i18n', '~> 3.0.0' # For 3.x
 
 # SORRY! But the 'datetimepicker-rails' name in RubyGems repo already taken.
 gem 'datetimepicker-rails', require: 'datetimepicker-rails',
                             git: 'git://github.com/zpaulovics/datetimepicker-rails.git'
 
-gem 'pry-rails', :group => :development
-
 group :development, :test do
   gem 'sqlite3', '~> 1.3.7'
+  gem 'pry-rails'
   gem 'rspec-rails', '~> 2.14.0'
   gem 'guard-rspec', '~> 3.0.2'
   gem 'spork-rails', github: 'sporkrb/spork-rails'

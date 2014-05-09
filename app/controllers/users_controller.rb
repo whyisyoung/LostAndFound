@@ -7,9 +7,9 @@ class UsersController < ApplicationController
   before_filter :signed_in_user_cannot_visit_signin_or_signup,
                                          only: [:new, :create]
 
-  def index
-    @users = User.page(params[:page])
-  end
+  # def index
+  #   @users = User.page(params[:page])
+  # end
 
   def new
     @user = User.new

@@ -13,10 +13,9 @@ describe "Index Pages" do
   describe "Home page" do
     before { visit root_path }
     let(:heading)    { 'Lost and Found' }
-    let(:page_title) { '' }
+    let(:page_title) { 'Home' }
 
-  	it_should_behave_like "all index pages"
-  	it { should_not have_title('| Home') }
+    it_should_behave_like "all index pages"
   end
 
   describe "Help page" do
@@ -24,12 +23,12 @@ describe "Index Pages" do
     let(:heading)    { 'Help' }
     let(:page_title) { 'Help' }
 
-  	it_should_behave_like "all index pages"
+    it_should_behave_like "all index pages"
   end
 
   describe "About page" do
     before { visit about_path }
-  	let(:heading)    { 'About Us' }
+    let(:heading)    { 'About Us' }
     let(:page_title) { 'About Us' }
 
     it_should_behave_like "all index pages"
@@ -37,7 +36,7 @@ describe "Index Pages" do
 
   describe "Contact page" do
     before { visit contact_path }
-  	let(:heading)    { 'Contact' }
+    let(:heading)    { 'Contact' }
     let(:page_title) { 'Contact' }
 
     it_should_behave_like "all index pages"

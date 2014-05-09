@@ -1,21 +1,19 @@
-<% provide( :title, 'Register' ) %>
-<h1>Register</h1>
+<% provide(:title, t('app.titles.register')) %>
+<!-- <h1><%= t('app.titles.register') %></h1> -->
 
 <div class="row">
   <div class="span6 offset3">
     <%= simple_form_for(@user) do |f| %>
       <%# SMALL: This maybe not needed any more. %>
-    	<%#= render 'shared/error_messages' %>
+      <%#= render 'shared/error_messages' %>
       <%= f.input :name %>
       <%= f.input :email %>
-      <%= f.input :password, placeholder: "6 - 20 characters",
-                             input_html: { maxlength: 20 },
+      <%= f.input :password, input_html: { maxlength: 20 },
                              required: true %>
       <%= f.input :password_confirmation,
-                             label: "Confirm password",
                              required: true %>
 
-      <%= f.button :submit, "Create my account",
+      <%= f.button :submit, t('app.button.new_account'),
                             class: "btn btn-large btn-primary" %>
     <% end %>
   </div>

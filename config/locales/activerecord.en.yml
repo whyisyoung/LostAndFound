@@ -1,0 +1,16 @@
+en:
+  active_record:
+    models:
+      lost_item: 'Lost Item'
+      user: 'User'
+      comment: 'Comment'
+      category: 'Category'
+    attributes:
+      lost_item:
+        lost_time: 'Lost time'
+        detail: 'Detail'
+        finder: 'Finder'
+        phone: 'Phone'
+        place: 'Place'
+        status: 'Status'
+        photo: 'Photo'
