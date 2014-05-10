@@ -1,3 +1,161 @@
 <% provide(:title, t('app.titles.home')) %>
-<%= render 'shared/lost_items' %>
-<%= will_paginate @lost_items %>
+<%= stylesheet_link_tag('ihover.min.css') %>
+
+<%#= render 'shared/lost_items' %>
+<%#= will_paginate @lost_items %>
+
+<!-- Carousel
+================================================== -->
+<div id="myCarousel" class="carousel slide" style="margin-top: -9px; margin-bottom: 40px">
+
+  <div class="carousel-inner">
+    <div class="item active">
+      <%= image_tag("slide-01.jpg") %>
+    </div>
+    <div class="item">
+      <%= image_tag("2.jpg") %>
+    </div>
+    <div class="item">
+      <%= image_tag("slide-01.jpg") %>
+    </div>
+  </div>
+
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div>
+<!-- Carousel
+================================================== -->
+
+
+<!-- Category
+================================================== -->
+<!-- Wrap the rest of the page in another container to center all the content. -->
+
+<div class="container" style="height:500px;width:90%">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row-fluid">
+      <div class="span4">
+        <div class="ih-item circle effect17">
+          <a href="/categories/1">
+            <div class="img">
+              <%= image_tag("phone.png") %>
+            </div>
+            <div class="info">
+
+              <h3><%= t('app.text.electronics') %></h3>
+              <p>Description goes here</p>
+
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- /.col-lg-4 -->
+
+      <div class="span4">
+        <div class="ih-item circle effect17">
+          <a href="/categories/2">
+            <div class="img">
+              <%= image_tag("card.png") %>
+            </div>
+            <div class="info">
+
+              <h3><%= t('app.text.card') %></h3>
+              <p>Description goes here</p>
+
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- /.col-lg-4 -->
+
+      <div class="span4">
+        <div class="ih-item circle effect17" >
+          <a href="/categories/3">
+            <div class="img" >
+              <%= image_tag("wallet.png") %>
+            </div>
+            <div class="info">
+
+              <h3><%= t('app.text.belongings') %></h3>
+              <p>Description goes here</p>
+
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- /.col-lg-4 -->
+
+    </div>
+
+    </br /></br />
+
+    <div class="row-fluid">
+      <div class="span4">
+        <div class="ih-item circle effect17">
+          <a href="/categories/4">
+            <div class="img">
+              <%= image_tag("book.png") %>
+            </div>
+            <div class="info">
+
+              <h3><%= t('app.text.book') %></h3>
+              <p>Description goes here</p>
+
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- /.col-lg-4 -->
+
+      <div class="span4">
+        <div class="ih-item circle effect17">
+          <a href="/categories/5">
+            <div class="img">
+              <%= image_tag("clothes.png") %>
+            </div>
+            <div class="info">
+
+              <h3><%= t('app.text.clothes') %></h3>
+              <p>Description goes here</p>
+
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- /.col-lg-4 -->
+
+      <div class="span4">
+        <div class="ih-item circle effect17" >
+          <a href="/categories/6">
+            <div class="img" >
+              <%= image_tag("others.png") %>
+            </div>
+            <div class="info">
+
+              <h3><%= t('app.text.others') %></h3>
+              <p>Description goes here</p>
+
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- /.col-lg-4 -->
+    </div>
+</div> <!-- /.container -->
+
+
+
+<!-- What do teachers and students say -->
+
+<div class="talk" style="height:300px;width:100%;background-color:pink;">
+
+</div>
+
+<!-- What do teachers and students say -->

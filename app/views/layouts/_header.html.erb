@@ -1,39 +1,50 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-    <div class="navbar-inner">
-        <div class="container">
-            <%= link_to 'Lost and Found', root_path, id: "logo" %>
-            <nav>
-                <ul class="nav pull-right">
-                    <li><%= link_to t('app.nav.home'),    root_path %></li>
-                    <li><%= link_to t('app.nav.help'),    help_path %></li>
-
-                    <%# Only signed_in user can see drop-down menu, else, log_in link. %>
-                    <% if logged_in? %>
-                        <!-- <li><%= link_to 'Users', users_path %></li> -->
-                        <li id="fat-menu" class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <%= current_signed_in_user.name %> <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><%= link_to t('app.nav.new_item'), new_user_lost_item_path(current_signed_in_user) %></li>
-                                <li><%= link_to t('app.nav.profile'), current_signed_in_user %></li>
-                                <li>
-                                    <%= link_to t('app.nav.settings'),
-                                            edit_user_path(current_signed_in_user) %>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <%= link_to t('app.nav.logout'), signout_path, method: "delete" %>
-                                </li>
-                            </ul>
-                        </li>
-                    <% else %>
-                        <li><%= link_to t('app.nav.login'), signin_path %></li>
-                        <li><%= link_to t('app.nav.signup'), register_path %></li>
-                    <% end %>
-                </ul>
-            </nav>
+<header class="navbar navbar-fixed-top navbar-inverse" style="height:50px;">
+  <div class="navbar-inner" >
+    <div class="container" style="width:100%;background-color: black;">
+      <div style="margin-left:48px;">
+        <div style="float:left;padding-right:10px">
+          <%= image_tag("logo2.png") %>
         </div>
-    </div>
-</header>
 
+        <div style="padding:3px;">
+            <%= link_to 'Lost and Found', root_path, id: "logo" %>
+        </div>
+
+        <div style="margin-right:60px;">
+          <nav>
+              <ul class="nav pull-right">
+                  <li><%= link_to t('app.nav.home'),    root_path %></li>
+                  <li><%= link_to t('app.nav.help'),    help_path %></li>
+
+                  <%# Only signed_in user can see drop-down menu, else, log_in link. %>
+                  <% if logged_in? %>
+                      <!-- <li><%= link_to 'Users', users_path %></li> -->
+                      <li id="fat-menu" class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                              <%= current_signed_in_user.name %> <b class="caret"></b>
+                          </a>
+                          <ul class="dropdown-menu">
+                              <li><%= link_to t('app.nav.new_item'), new_user_lost_item_path(current_signed_in_user) %></li>
+                              <li><%= link_to t('app.nav.profile'), current_signed_in_user %></li>
+                              <li>
+                                  <%= link_to t('app.nav.settings'),
+                                          edit_user_path(current_signed_in_user) %>
+                              </li>
+                              <li class="divider"></li>
+                              <li>
+                                  <%= link_to t('app.nav.logout'), signout_path, method: "delete" %>
+                              </li>
+                          </ul>
+                      </li>
+                  <% else %>
+                      <li><%= link_to t('app.nav.login'), signin_path %></li>
+                      <li><%= link_to t('app.nav.signup'), register_path %></li>
+                  <% end %>
+              </ul>
+          </nav>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</header>

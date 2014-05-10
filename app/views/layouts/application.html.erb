@@ -14,39 +14,9 @@
     <%= render 'layouts/shim' %>
   </head>
   <body>
-    <%= render 'layouts/header' %>
     <div class="container">
-
-      <div class="center">
-        <!-- <div class="center hero-unit"> -->
-        <%#  <h1>Welcome to Lost and Found</h1>
-        <p>
-          This is the home page for ECNU lost and found application.
-        </p>
-        <%= link_to 'Sign up now!', register_path,
-                                    class: "btn btn-large btn-primary" %>
-          <div class="header-left">
-            <div class="logo">
-              <%= image_tag("logo2.png") %>
-            </div>
-          </div>
-
-        <div class='header-right'>
-            <%= image_tag("site_info.jpg", class: "site-info-img") %>
-            <%= image_tag("location.jpg", class: "location-img") %>
-          <div class="item-category">
-              <ul class="nav nav-pills">
-                <li><%= link_to('首页',    root_path) %></li>
-                <li><%= link_to('手机数码', category_path(1)) %></li>
-                <li><%= link_to('校园卡',   category_path(2)) %></li>
-                <li><%= link_to('随身物品', category_path(3)) %></li>
-                <li><%= link_to('书籍',    category_path(4)) %></li>
-                <li><%= link_to('衣物',    category_path(5)) %></li>
-                <li><%= link_to('其他',    category_path(6)) %></li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <%= render 'layouts/header' %>
+    </div>
 
       <% flash.each do | key, value | %>
         <%= content_tag( :div, value, class: "alert alert-#{key}" ) %>
@@ -54,9 +24,12 @@
 
       <%= yield %>
 
-      <%= render 'layouts/footer' %>
+
+      <div class="container">
+        <%= render 'layouts/footer' %>
+      </div>
       <%= debug(params) if Rails.env.development? %>
-    </div>
+
     <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/<%= bootstrap_version %>/js/bootstrap.min.js"></script> -->
   </body>
 </html>

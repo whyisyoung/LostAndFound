@@ -27,7 +27,7 @@ zh-CN:
         current_password: '旧密码'
     button:
       new_account: '注册 L+F '
-      signin: '登陆'
+      signin: '  登陆  '
       save_changes: '保存更改'
     link:
       register: '立即注册!'
@@ -42,3 +42,9 @@ zh-CN:
       update_profile: '更新资料'
       new_item: '新建失物'
       my_items: '我捡到的失物'
+      electronics: '手机数码'
+      card: '校园卡'
+      belongings: '随身物品'
+      book: '书籍资料'
+      clothes: '衣物饰品'
+      others: '其他物品'

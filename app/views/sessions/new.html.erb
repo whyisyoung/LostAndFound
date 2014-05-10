@@ -1,19 +1,20 @@
 <% provide(:title, t('app.titles.login')) %>
-<!-- <h1><%= t('app.titles.login') %></h1> -->
 
-<div class="row">
-    <div class="span6 offset3">
-        <%= simple_form_for(:session, url: sessions_path,
-                                      html: { class: "signin_form" }) do |f| %>
+<div class="container">
+    <h1><%= t('app.titles.login') %></h1>
+    <div class="row">
+        <div class="span6 offset3">
+            <%= simple_form_for(:session, url: sessions_path,
+                                          html: { class: "signin_form" }) do |f| %>
 
-            <%= f.input :email %>
-            <%= f.input :password %>
+                <%= f.input :email %>
+                <%= f.input :password %>
+                <%= f.submit t('app.button.signin'), class: "btn btn-large btn-primary" %>
+            <% end %>
 
-            <%= f.submit t('app.button.signin'), class: "btn btn-large btn-primary" %>
-        <% end %>
-
-        <p class="new_user">
-            <%= t('app.text.new_user') %><%= link_to t('app.link.register'), register_path %>
-        </p>
+            <p class="new_user">
+                <%= t('app.text.new_user') %><%= link_to t('app.link.register'), register_path %>
+            </p>
+        </div>
     </div>
 </div>
