@@ -1,29 +1,33 @@
 <%= stylesheet_link_tag 'jquery.dataTables.min.css' %>
 <%= stylesheet_link_tag 'dataTables.bootstrap.css' %>
-<div class="container">
+
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+<div class="container" style="width: 60%;">
+    <h1><%= to_chinese(@category.name) %></h1>
       <table id="lost_item_datatable" class="table table-hover">
         <thead>
             <tr>
-                <th>发布时间</th>
-                <th>遗失物品</th>
-                <th>遗失地点</th>
-                <th>拾到者</th>
+                <th style="text-align: center;"> <i class="fa fa-calendar fa-2x"></i> 发布时间</th>
+                <th style="text-align: center;"><i class="fa fa-question fa-2x"></i> 遗失物品</th>
+                <th style="text-align: center;"><i class="fa fa-building fa-2x"></i> 遗失地点</th>
+                <th style="text-align: center;"> <i class="fa fa-male fa-2x"></i>   拾到者</th>
                 <th class="hidden">状态</th>
             </tr>
         </thead>
         <tbody>
           <% @lost_items.each do |lost_item| %>
             <% user = User.find(lost_item.user_id) %>
-            <tr>
-                <td><%= lost_item.created_at.to_date %></td>
+            <tr class="table-lost-items">
+                <td style="text-align: center;"><%= lost_item.created_at.to_date %></td>
                 <% if lost_item.detail.length > 20 %>
-                    <td><%= link_to(lost_item.detail[0..20]+"...", user_lost_item_path(user, lost_item)) %></td>
+                    <td style="text-align: center;"><%= link_to(lost_item.detail[0..20]+"...", user_lost_item_path(user, lost_item)) %></td>
                   <% else %>
-                    <td><%= link_to(lost_item.detail,
+                    <td style="text-align: center;"><%= link_to(lost_item.detail,
                         user_lost_item_path(user, lost_item)) %></td>
                   <% end %>
-                <td><%= lost_item.place %></td>
-                <td><%= lost_item.finder %></td>
+                <td style="text-align: center;"><%= lost_item.place %></td>
+                <td style="text-align: center;"><%= lost_item.finder %></td>
                 <td id="item_status"><%= lost_item.status %></td>
             </tr>
             <% end %>

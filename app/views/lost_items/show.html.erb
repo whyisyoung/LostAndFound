@@ -1,59 +1,66 @@
 <%= stylesheet_link_tag('jquery.fancybox.css') %>
+<div class="container">
 
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
 
-<h3><%= t('app.titles.lost_item_info') %></h3>
+  <h3><%= t('app.titles.lost_item_info') %></h3>
+  <br /><br />
 
-<p>
-  <b><%= t('active_record.attributes.lost_item.lost_time') %>: </b>
-  <%= @lost_item.lost_time %>
-</p>
+  <p>
+    <b><%= t('active_record.attributes.lost_item.lost_time') %>: </b>
+    <%= @lost_item.lost_time.to_date %>
+  </p>
 
-<p>
-  <b><%= t('active_record.attributes.lost_item.detail') %>: </b>
-  <%= @lost_item.detail %>
-</p>
+  <p>
+    <b><%= t('active_record.attributes.lost_item.detail') %>: </b>
+    <%= @lost_item.detail %>
+  </p>
 
-<p>
-  <b><%= t('active_record.attributes.lost_item.finder') %>: </b>
-  <%= @lost_item.finder %>
-</p>
+  <p>
+    <b><%= t('active_record.attributes.lost_item.finder') %>: </b>
+    <%= @lost_item.finder %>
+  </p>
 
-<p>
-  <b><%= t('active_record.attributes.lost_item.phone') %>: </b>
-  <%= @lost_item.phone %>
-</p>
+  <p>
+    <% if logged_in? %>
+      <b><%= t('active_record.attributes.lost_item.phone') %>: </b>
+      <%= @lost_item.phone %>
+    <% else %>
+      <%= link_to('请登录后查看联系方式', signin_path, class: 'btn btn-danger') %>
+    <% end %>
+  </p>
 
-<p>
-  <b><%= t('active_record.attributes.lost_item.status') %>: </b>
-  <%= @lost_item.status.to_s %>
-</p>
+  <p>
+    <b><%= t('active_record.attributes.lost_item.status') %>: </b>
+    <%= @lost_item.status.to_s %>
+  </p>
 
-<p>
-  <b><%= t('active_record.attributes.lost_item.place') %>: </b>
-  <%= @lost_item.place %>
-</p>
+  <p>
+    <b><%= t('active_record.attributes.lost_item.place') %>: </b>
+    <%= @lost_item.place %>
+  </p>
 
-<p>
-  <b><%= t('active_record.models.category') %>: </b>
-  <%= @lost_item.category.name %>
-</p>
+  <p>
+    <b><%= t('active_record.models.category') %>: </b>
+    <%= to_chinese(@lost_item.category.name) %>
+  </p>
 
-<% if @lost_item.photo.exists? %>
-  <a class="fancybox">
-    <a id="single_image" href=<%= @lost_item.photo %>><%= image_tag @lost_item.photo(:thumb) %></a>
-  </a>
-  <br> <br>
-<% end %>
+  <% if @lost_item.photo.exists? %>
+    <a class="fancybox">
+      <a id="single_image" href=<%= @lost_item.photo %>><%= image_tag @lost_item.photo(:thumb) %></a>
+    </a>
+    <br> <br>
+  <% end %>
 
 
-<%= link_to t('app.link.edit'), edit_user_lost_item_path(@user, @lost_item) %> |
-<%= link_to t('app.link.back'), user_path(@user) %>
+  <%= link_to t('app.link.edit'), edit_user_lost_item_path(@user, @lost_item) %> |
+  <%= link_to t('app.link.back'), user_path(@user) %>
 
-<div class="comments">
-  <!-- <h4><%= t('app.text.comments') %></h4> -->
-  <%= render :partial => 'comments/form', :locals => { :comment => @new_comment } %>
-  <%= render :partial => 'comments/comment', :collection => @comments, :as => :comment %>
+  <div class="comments">
+    <!-- <h4><%= t('app.text.comments') %></h4> -->
+    <%= render :partial => 'comments/form', :locals => { :comment => @new_comment } %>
+    <%= render :partial => 'comments/comment', :collection => @comments, :as => :comment %>
+  </div>
+
 </div>
-
 <%= javascript_include_tag('jquery.fancybox.pack.js') %>

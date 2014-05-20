@@ -1,11 +1,13 @@
 <% provide(:title, t('app.titles.edit_lost_item')) %>
-<h1><%= t('app.titles.edit_lost_item') %></h1>
+<div class="container">
+  <h1><%= t('app.titles.edit_lost_item') %></h1>
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= render 'form' %>
+  <div class="row">
+    <div class="span6 offset3">
+      <%= render 'form' %>
 
-    <%= link_to t('app.link.show'), user_lost_item_path(@user, @lost_item) %> |
-    <%= link_to t('app.link.back'), user_path(@user) %>
+      <%= link_to t('app.link.show'), user_lost_item_path(@user, @lost_item) %> |
+      <%= link_to t('app.link.back'), user_path(@user) %>
+    </div>
   </div>
 </div>

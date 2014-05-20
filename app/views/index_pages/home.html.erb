@@ -6,9 +6,15 @@
 
 <!-- Carousel
 ================================================== -->
-<div id="myCarousel" class="carousel slide" style="margin-top: -9px; margin-bottom: 40px">
+<div id="intro-carousel" class="carousel slide" style="margin-top: -9px;">
 
-  <div class="carousel-inner">
+  <ol class="carousel-indicators">
+    <li data-target="#intro-carousel" data-slide-to="0" class="active"></li>
+    <li data-target="#intro-carousel" data-slide-to="1"></li>
+    <li data-target="#intro-carousel" data-slide-to="2"></li>
+  </ol>
+
+  <div class="carousel-inner" style="height: 423px;">
     <div class="item active">
       <%= image_tag("slide-01.jpg") %>
     </div>
@@ -16,12 +22,12 @@
       <%= image_tag("2.jpg") %>
     </div>
     <div class="item">
-      <%= image_tag("slide-01.jpg") %>
+      <%= image_tag("slide-02.jpg") %>
     </div>
   </div>
 
-  <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-  <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+  <a class="left carousel-control" href="#intro-carousel" data-slide="prev">&lsaquo;</a>
+  <a class="right carousel-control" href="#intro-carousel" data-slide="next">&rsaquo;</a>
 </div>
 <!-- Carousel
 ================================================== -->
@@ -30,8 +36,22 @@
 <!-- Category
 ================================================== -->
 <!-- Wrap the rest of the page in another container to center all the content. -->
+</br /></br />
+
+<div class="categories">
+
+  <div class="category-title">
+    <hr />
+      <span> 我们找回的</span>
+    <hr class="right"/>
+  </div>
+</div>
+
+<br/>
 
 <div class="container" style="height:500px;width:90%">
+
+
 
     <!-- Three columns of text below the carousel -->
     <div class="row-fluid">
@@ -43,8 +63,8 @@
             </div>
             <div class="info">
 
-              <h3><%= t('app.text.electronics') %></h3>
-              <p>Description goes here</p>
+              <h3 style="font-weight: lighter"><%= t('app.text.electronics') %></h3>
+              <p>查看更多</p>
 
             </div>
           </a>
@@ -61,8 +81,8 @@
             </div>
             <div class="info">
 
-              <h3><%= t('app.text.card') %></h3>
-              <p>Description goes here</p>
+              <h3 style="font-weight: lighter"><%= t('app.text.card') %></h3>
+              <p>查看更多</p>
 
             </div>
           </a>
@@ -79,8 +99,8 @@
             </div>
             <div class="info">
 
-              <h3><%= t('app.text.belongings') %></h3>
-              <p>Description goes here</p>
+              <h3 style="font-weight: lighter"><%= t('app.text.belongings') %></h3>
+              <p>查看更多</p>
 
             </div>
           </a>
@@ -102,8 +122,8 @@
             </div>
             <div class="info">
 
-              <h3><%= t('app.text.book') %></h3>
-              <p>Description goes here</p>
+              <h3 style="font-weight: lighter"><%= t('app.text.book') %></h3>
+              <p>查看更多</p>
 
             </div>
           </a>
@@ -120,8 +140,8 @@
             </div>
             <div class="info">
 
-              <h3><%= t('app.text.clothes') %></h3>
-              <p>Description goes here</p>
+              <h3 style="font-weight: lighter"><%= t('app.text.clothes') %></h3>
+              <p>查看更多</p>
 
             </div>
           </a>
@@ -138,8 +158,8 @@
             </div>
             <div class="info">
 
-              <h3><%= t('app.text.others') %></h3>
-              <p>Description goes here</p>
+              <h3 style="font-weight: lighter"><%= t('app.text.others') %></h3>
+              <p>查看更多</p>
 
             </div>
           </a>
@@ -151,11 +171,61 @@
 </div> <!-- /.container -->
 
 
-
 <!-- What do teachers and students say -->
 
-<div class="talk" style="height:300px;width:100%;background-color:pink;">
+<!-- Carousel
+================================================== -->
 
+<div class="bottomimage">
+</br></br>
+<div class="categories">
+  <div class="category-title">
+    <hr />
+      <span>师生感言</span>
+    <hr class="right"/>
+  </div>
+</div>
+<div id="talk-carousel" class="carousel talk-slide"  data-ride="carousel"  style="margin-top: -9px;">
+
+  <ol class="carousel-indicators">
+    <li data-target="#talk-carousel" data-slide-to="0" class="active"></li>
+    <li data-target="#talk-carousel" data-slide-to="1"></li>
+    <li data-target="#talk-carousel" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+
+  <div class="carousel-inner" style="height: 250px;">
+
+    <div class="item active">
+
+      <div class="message1">
+      <h3>我一直在寻找一款适合我们团队使用的协同工具，但因为各种原因最后都放弃了，直到用上LOSTANDFOUND，才感觉找到了我的真爱，我愿意把它推荐给我们身边每一位有团队协同需求的朋友。 </h3>
+
+    </div>
+
+
+
+    </div>
+
+    <div class="item">
+
+      <p>hahahhhahahahahahahahaha</p>
+
+  </div>
+
+    <div class="item">
+         <div class="bottomimage">
+      <p>oooooooooooooooooooooo</p>
+    </div>
+
+    </div>
+</div>
+</div>
 </div>
 
+<!-- Carousel
+================================================== -->
+
 <!-- What do teachers and students say -->
+

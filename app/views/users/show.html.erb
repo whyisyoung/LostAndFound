@@ -1,28 +1,30 @@
 <% provide( :title, @user.name ) %>
-<div class="row">
-  <aside class="span4">
-    <section>
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
-    <section>
-      <% if current_signed_in_user?(@user) or
-          current_signed_in_user.admin?  %>
-        <%= link_to t('app.text.new_item'), new_user_lost_item_path(@user), class: "btn btn-large btn-primary" %>
-      <% end %>
-    </section>
-  </aside>
+<div class="container">
+  <div class="row">
+    <aside class="span4">
+      <section>
+        <h1>
+          <%= gravatar_for @user %>
+          <%= @user.name %>
+        </h1>
+      </section>
+      <section>
+        <% if current_signed_in_user?(@user) or
+            current_signed_in_user.admin?  %>
+          <%= link_to t('app.text.new_item'), new_user_lost_item_path(@user), class: "btn btn-large btn-primary" %>
+        <% end %>
+      </section>
+    </aside>
 
-  <%# Show all the lost_items posted by the user.  %>
-  <div class="span8">
-    <% if @user.lost_items.any? %>
-      <h3><%= t('app.text.my_items') %> (<%= @user.lost_items.count %>)</h3>
-      <ol class="lost_items">
-        <%= render @lost_items %>
-      </ol>
-      <%= will_paginate @lost_items %>
-    <% end %>
+    <%# Show all the lost_items posted by the user.  %>
+    <div class="span8">
+      <% if @user.lost_items.any? %>
+        <h3><%= t('app.text.my_items') %> (<%= @user.lost_items.count %>)</h3>
+        <ol class="lost_items">
+          <%= render @lost_items %>
+        </ol>
+        <%= will_paginate @lost_items %>
+      <% end %>
+    </div>
   </div>
 </div>

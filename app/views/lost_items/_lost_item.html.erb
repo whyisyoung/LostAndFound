@@ -3,7 +3,7 @@
     <%=  link_to(lost_item.detail, user_lost_item_path(@user, lost_item)) %>
   </span>
   <span class="timestamp">
-    Posted <%= time_ago_in_words(lost_item.created_at) %> ago.
+    <%= time_ago_in_words(lost_item.created_at) %>前发布.
   </span>
   <% if current_signed_in_user?(lost_item.user) or
         current_signed_in_user.admin? %>

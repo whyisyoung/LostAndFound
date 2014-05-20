@@ -1,10 +1,12 @@
 <% provide(:title, 'New Lost Item') %>
-<h1><%= t('app.text.new_item') %></h1>
+<div class="container">
+  <h1><%= t('app.text.new_item') %></h1>
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= render 'form' %>
+  <div class="row">
+    <div class="span6 offset3">
+      <%= render 'form' %>
 
-    <%= link_to t('app.link.back'), user_path(@user) %>
+      <%= link_to t('app.link.back'), user_path(@user) %>
+    </div>
   </div>
 </div>

@@ -6,7 +6,7 @@ $(document).ready(function() {
 
     $('tr > #item_status').each(function() {
         var $status = $(this).html();
-        if ($status == 'claimed') {
+        if ($status == '已认领') {
             $(this).parents('tr').removeClass('info');
             $(this).parents('tr').addClass('success');
         }
@@ -40,7 +40,12 @@ $(document).ready(function() {
 
 
     // for datatable
-    $('#lost_item_datatable').dataTable();
+    $('#lost_item_datatable').dataTable({
+        "info": false,
+        "pageLength": 15,
+        "bLengthChange": false,
+        "bDestroy": true
+    });
     // $('#lost_item_datatable').dataTable({
     //     //paging: false,
     //     ordering: false

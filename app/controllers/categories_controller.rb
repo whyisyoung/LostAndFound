@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @lost_items = @category.lost_items.paginate(page: params[:page])
+    @lost_items = @category.lost_items#.paginate(page: params[:page])
   end
 
   def new

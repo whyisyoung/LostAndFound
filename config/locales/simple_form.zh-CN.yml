@@ -29,7 +29,7 @@ zh-CN:
         new:
           password: '长度应在 6 - 20 位之间'
         edit:
-          password: '不修改密码可不填'
+          password: '若不修改可不填'
     include_blanks:
       lost_item:
         phone: '可不填'
