@@ -2,9 +2,10 @@
 <br /> <br />
 
 <div class="container">
-  <div class="row">
-    <div class="span6 offset3" style="border:1px solid #cccccc;">
-      <h1><%= t('app.titles.register') %></h1>
+  <div class="table table-bordered">
+      <!-- <h1><%= t('app.titles.register') %></h1> -->
+      <h1>注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;册</h1>
+      <div style="margin-left: 30px">
       <%= simple_form_for(@user) do |f| %>
         <%# SMALL: This maybe not needed any more. %>
         <%#= render 'shared/error_messages' %>

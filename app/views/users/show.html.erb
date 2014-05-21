@@ -8,7 +8,7 @@
           <%= @user.name %>
         </h1>
       </section>
-      <section>
+      <section style="margin-left: 60px;">
         <% if current_signed_in_user?(@user) or
             current_signed_in_user.admin?  %>
           <%= link_to t('app.text.new_item'), new_user_lost_item_path(@user), class: "btn btn-large btn-primary" %>

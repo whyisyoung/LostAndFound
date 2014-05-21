@@ -3,9 +3,10 @@
 
 <div class="container">
 
-    <div class="row">
-        <div class="span6 offset3" style="border:1px solid #cccccc;">
-            <h1><%= t('app.titles.login') %></h1>
+    <div class="table table-bordered">
+            <!-- <div class="span6 offset3" style="border:1px solid #cccccc;"> -->
+            <h1> 登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;陆 </h1>
+            <div style="margin-left: 30px">
             <%= simple_form_for(:session, url: sessions_path,
                                           html: { class: "signin_form" }) do |f| %>
 

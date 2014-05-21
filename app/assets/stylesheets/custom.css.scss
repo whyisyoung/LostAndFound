@@ -322,8 +322,20 @@ p.new_user {
 }
 
 .comments {
-  width: 50%
+  width: 54.8%;
+  margin-left: 22.0%;
+  .comment-input {
+    width: 100%;
+  }
+  .comment-btn {
+    float: right;
+  }
+  .comment {
+    margin-top: 55px;
+  }
 }
+
+
 
 .categories {
   width: 100%;
@@ -367,7 +379,8 @@ div.dataTables_paginate ul.pagination {
   background-color: #fff;
 }
 .bottomimage{
-  background-image: url(image-path('bottom2.jpg'));
+  //background-image: url(image-path('bottom2.jpg'));
+  background-color: rgb(82, 96, 112);
   height:300px;
 }
 .message1{
@@ -377,10 +390,12 @@ div.dataTables_paginate ul.pagination {
 .message1 h3{
 
     font-size:16px;
-    color:#ccc;
+    font-weight: lighter;
+    font-family: cursive;
+    color:#fff;
     // font-family:"KaiTi";
-    letter-spacing:5px;
-    text-indent: 4em;
+    letter-spacing:4px;
+    text-indent: 2em;
     line-height:17pt;
   }
 
@@ -390,7 +405,7 @@ div.dataTables_paginate ul.pagination {
     margin-top: 50px;
     width:700px;
     height:400px;
-    background-color:#fff;
+    background-color:rgb(240, 255, 235);
     p{
       margin-bottom: 30px;
     }
@@ -403,7 +418,6 @@ div.dataTables_paginate ul.pagination {
     height:200px;
     .comments{
       width:600px;
-      height:100px;
     }
   }
   .showleft{
@@ -415,7 +429,7 @@ div.dataTables_paginate ul.pagination {
   .showimage{
 
     width:150px;
-    height:112px;
+    height:150px;
     border:2px solid #ccc;
 
     margin:50px 70px;
@@ -436,8 +450,15 @@ div.dataTables_paginate ul.pagination {
 
   float:left;
   h3{
-
     padding-top: 45px;
+  }
+  .item-showpage-link {
+    float: right;
+    margin-right: 45px;
+    margin-top: 55px;
+  }
+  .showhead-title {
+    float: left;
   }
 }
 
@@ -458,6 +479,7 @@ div.dataTables_paginate ul.pagination {
   width:100%;
   height:20%;
   float:left;
+  padding-top: 15px;
   /*background-color: black;*/
 }
 .showicon{

@@ -7,7 +7,7 @@
       <%= render 'form' %>
 
       <%= link_to t('app.link.show'), user_lost_item_path(@user, @lost_item) %> |
-      <%= link_to t('app.link.back'), user_path(@user) %>
+      <%= link_to t('app.link.back'), category_path(@lost_item.category) %>
     </div>
   </div>
 </div>

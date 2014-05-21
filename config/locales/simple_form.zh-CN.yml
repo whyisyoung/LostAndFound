@@ -18,8 +18,8 @@ zh-CN:
         phone: '联系电话'
         place: '丢失地点'
         status: '认领情况'
-        category: '类别'
-        photo: '图片'
+        category: '物品类别'
+        photo: ' 上传图片'
       user:
         name: '昵称'
         email: '邮箱'
